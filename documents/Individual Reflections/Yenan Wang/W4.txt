@@ -1,0 +1,20 @@
+# what do I want to learn or understand better?
+As of the beginning of this week I was assigned the role with a focus on the
+backend. While I've read a bit on the documentations and some tutorials of
+the SpringBoot API, I still feel a lack of understanding on the subject. So to
+improve that I need to be more experienced with it and therefor I plan to
+experiment the SpringBoot during my free time.
+
+# how can I help someone else, or the entire team, to learn something new?
+Mostly by helping them through voice chat and a shared screen if someone needs
+help with anything.
+
+# what is my contribution towards the team’s use of Scrum?
+I helped the team by breaking down the user story that we are focusing on to
+tasks that revolve around backend.
+  
+# what is my contribution towards the team’s deliveries?
+For this week the backend team (me and Alex) has finished creating the database
+and we have started working the logic part of the backend. Next week we should 
+be able to finish a basic functional backend.
+
