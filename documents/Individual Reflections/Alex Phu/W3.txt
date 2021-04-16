@@ -1,0 +1,15 @@
+
+# What do I want to learn or understand better?
+Although I worked a bit with Spring Boot last week, I still want to dig deeper into this framework so that I can prepare myself 
+for future user stories which may require better knowledge of the framework. I.e login functionality (spring security) and 
+sending emails from the back-end.
+
+# How can I help someone else, or the entire team, to learn something new?
+I experimented a bit with Spring Boot during the easter so I'm doing my best to share the knowledge that I've gathered. 
+
+# What is my contribution towards the team’s use of Scrum?
+At the beginning of the week I assisted - along with the other team members - with breaking down the user stories into tasks.
+
+# What is my contribution towards the team’s deliveries?
+As I was given the responsibility of the back-end, I primarily worked on setting up the initial version of the back-end with Yenan. 
+
