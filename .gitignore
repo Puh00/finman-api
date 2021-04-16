@@ -1,1 +1,9 @@
-.DS_Store
+### ignore everything in the root folder
+/*
+
+### except these
+!.gitignore
+!README.md
+!/backend
+!/frontend
+!/documents
