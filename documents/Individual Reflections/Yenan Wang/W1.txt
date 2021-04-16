@@ -1,4 +1,3 @@
-
 # what do I want to learn or understand better?
   this project introduces a lot of new technologies which i'm not familiar with,
   so i would like to be better at them

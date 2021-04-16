@@ -1,4 +1,3 @@
-
 # what do I want to learn or understand better?
 for the most parts, it's still the frameworks that i want to be learn, it's 
 decided to use ReactJS and Java with SpringBoot to create this webapp, both
