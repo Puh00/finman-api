@@ -1,5 +1,6 @@
 package net.finman.dao;
 
+import net.finman.exception.ResourceNotCreatedException;
 import net.finman.model.Invoice;
 import net.finman.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,9 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Types;
+import java.util.List;
 
 @Repository
 public class InvoiceDaoImpl implements InvoiceDao {
@@ -21,8 +22,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
     private static final String INSERT_INVOICE_ITEMS = "INSERT INTO InvoiceItems VALUES (:invoice, :item_id, :item_owner, :amount)";
 
     @Override
-    @Transactional
-    public void createInvoice(Invoice inv) {
+    public void createInvoice(Invoice inv) throws ResourceNotCreatedException {
         try {
             SqlParameterSource invoiceParams = new MapSqlParameterSource()
                     .addValue("serial_no", inv.getSerialNumber())
@@ -36,18 +36,24 @@ public class InvoiceDaoImpl implements InvoiceDao {
                     .addValue("seller", inv.getSeller())
                     .addValue("buyer", inv.getBuyer());
             template.update(INSERT_INVOICE, invoiceParams);
+        } catch (DataAccessException e) {
+            throw new ResourceNotCreatedException("Failed to create invoice", e.getMessage());
+        }
+    }
 
-            for (Item i : inv.getItems()) {
+    @Override
+    public void addInvoiceItems(int serialNumber, List<Item> items) throws ResourceNotCreatedException {
+        try {
+            for (Item i : items) {
                 SqlParameterSource itemsParams = new MapSqlParameterSource()
-                        .addValue("invoice", inv.getSerialNumber())
+                        .addValue("invoice", serialNumber)
                         .addValue("item_id", i.getId())
                         .addValue("item_owner", i.getOwner())
                         .addValue("amount", i.getAmount());
                 template.update(INSERT_INVOICE_ITEMS, itemsParams);
             }
-        }
-        catch (DataAccessException e) {
-            System.out.println("git gud");
+        } catch (DataAccessException e) {
+            throw new ResourceNotCreatedException("Failed to add items to invoice", e.getMessage());
         }
     }
 }
