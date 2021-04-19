@@ -1,20 +1,24 @@
 package net.finman.controller;
 
-import net.finman.dao.InvoiceDao;
+import net.finman.exception.ResourceNotCreatedException;
 import net.finman.model.Invoice;
+import net.finman.service.InvoiceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class InvoiceController {
-    @Resource
-    InvoiceDao invoiceDao;
+
+    @Autowired
+    InvoiceService invoiceService;
 
     @PostMapping("/invoices")
-    public void createInvoice(@RequestBody Invoice inv) {
-        invoiceDao.createInvoice(inv);
+    public ResponseEntity<?> createInvoice(@RequestBody Invoice inv) throws ResourceNotCreatedException {
+        invoiceService.createInvoice(inv);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
