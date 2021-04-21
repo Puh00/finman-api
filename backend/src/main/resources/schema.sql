@@ -1,6 +1,8 @@
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE Accounts
 (
     id        INTEGER PRIMARY KEY,
@@ -46,16 +48,15 @@ CREATE TABLE Persons
 
 CREATE TABLE Invoices
 (
-    serial_no    INTEGER PRIMARY KEY,
-    invoice_no   VARCHAR(16) NOT NULL,
-    VAT          INTEGER     NOT NULL,
+    serial_no    UUID UNIQUE DEFAULT uuid_generate_v4(),
+    VAT          INTEGER     NOT NULL DEFAULT 25,
     OCR          VARCHAR(16) NOT NULL,
     invoice_date DATE        NOT NULL,
     expiry_date  DATE        NOT NULL,
     bankgiro     VARCHAR(16),
-    reg_no       VARCHAR(16),
-    seller       INTEGER     NOT NULL REFERENCES Organizations (id),
-    buyer        INTEGER     NOT NULL REFERENCES Customers (id)
+    seller       INTEGER     REFERENCES Organizations (id),
+    buyer        INTEGER     NOT NULL REFERENCES Customers (id),
+    PRIMARY KEY (serial_no, seller)
 );
 
 CREATE TABLE Items
@@ -71,10 +72,11 @@ CREATE TABLE Items
 
 CREATE TABLE InvoiceItems
 (
-    invoice    INTEGER REFERENCES Invoices (serial_no),
+    invoice    UUID,
     item_id    INTEGER,
     item_owner INTEGER,
     amount     INTEGER NOT NULL CHECK (amount >= 0),
     PRIMARY KEY (invoice, item_id, item_owner),
-    FOREIGN KEY (item_id, item_owner) REFERENCES Items (id, owner)
+    FOREIGN KEY (item_id, item_owner) REFERENCES Items (id, owner),
+    FOREIGN KEY (invoice) REFERENCES Invoices (serial_no)
 );
