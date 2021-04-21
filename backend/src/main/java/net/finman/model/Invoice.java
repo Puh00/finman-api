@@ -1,9 +1,10 @@
 package net.finman.model;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Invoice {
-    private int serialNumber;
+    private UUID serialNumber;
     private String invoiceNumber;
     private int vat;
     private String ocr;
@@ -15,11 +16,11 @@ public class Invoice {
     private int buyer;
     private List<Item> items;
 
-    public void setSerialNumber(int serialNumber) {
+    public void setSerialNumber(UUID serialNumber) {
         this.serialNumber = serialNumber;
     }
 
-    public int getSerialNumber() {
+    public UUID getSerialNumber() {
         return serialNumber;
     }
 

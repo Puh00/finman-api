@@ -22,11 +22,11 @@ INSERT INTO Invoices(serial_no, OCR, invoice_date, expiry_date, bankgiro, seller
 INSERT INTO Invoices(serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, buyer) VALUES ('74645d1c-9d33-417f-bce7-ba3bc7079776', '432133392', '1988-03-23', '1995-04-01', '01234567', 3, 2);
 INSERT INTO Invoices(serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, buyer) VALUES ('8ada6be8-a81c-4275-9bec-514ba37c1d7d', '893247921', '1999-08-29', '1999-09-13', '01234567', 4, 3);
 
-INSERT INTO Items VALUES  (1, 1, 'Booba Tea', 25, 'St');
-INSERT INTO Items VALUES  (2, 1, 'Hot dog', 45, 'St');
-INSERT INTO Items VALUES  (1, 2, 'Bacon strips', 35, 'Pk');
-INSERT INTO Items VALUES  (2, 2, 'Mayonnaise', 54, 'Flaska');
-INSERT INTO Items VALUES  (3, 2, 'Premium Handcrafted Special Omega Deluxe Edition Lard', 169, 'Burk');
+INSERT INTO Items VALUES  (1, 1, 'Booba Tea', 25);
+INSERT INTO Items VALUES  (2, 1, 'Hot dog', 45);
+INSERT INTO Items VALUES  (1, 2, 'Bacon strips', 35);
+INSERT INTO Items VALUES  (2, 2, 'Mayonnaise', 54);
+INSERT INTO Items VALUES  (3, 2, 'Premium Handcrafted Special Omega Deluxe Edition Lard', 169);
 
 INSERT INTO InvoiceItems VALUES ('9dd576c5-d7ee-4e00-a653-b5c4727e5275', 3, 1, 1, 2);
 INSERT INTO InvoiceItems VALUES ('9dd576c5-d7ee-4e00-a653-b5c4727e5275', 3, 2, 1, 4);

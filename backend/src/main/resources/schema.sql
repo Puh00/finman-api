@@ -66,7 +66,6 @@ CREATE TABLE Items
     owner INTEGER REFERENCES Accounts (id),
     name  VARCHAR(128) NOT NULL,
     price INTEGER      NOT NULL,
-    unit  VARCHAR(16)  NOT NULL,
     PRIMARY KEY (id, owner)
 );
 
