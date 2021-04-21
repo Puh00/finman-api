@@ -25,11 +25,10 @@ public class InvoiceDaoImpl implements InvoiceDao {
     @Override
     public void createInvoice(Invoice inv) throws ResourceNotCreatedException {
         try {
-            UUID rUUID = UUID.randomUUID();
-            inv.setSerialNumber(rUUID);
-            
+            inv.setSerialNumber(UUID.randomUUID());
+
             SqlParameterSource invoiceParams = new MapSqlParameterSource()
-                    .addValue("serial_no", rUUID)
+                    .addValue("serial_no", inv.getSerialNumber())
                     .addValue("OCR", inv.getOcr())
                     .addValue("invoice_date", inv.getInvoiceDate(), Types.DATE)
                     .addValue("expiry_date", inv.getExpiryDate(), Types.DATE)
