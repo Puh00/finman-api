@@ -28,8 +28,8 @@ INSERT INTO Items VALUES  (1, 2, 'Bacon strips', 35, 'Pk');
 INSERT INTO Items VALUES  (2, 2, 'Mayonnaise', 54, 'Flaska');
 INSERT INTO Items VALUES  (3, 2, 'Premium Handcrafted Special Omega Deluxe Edition Lard', 169, 'Burk');
 
-INSERT INTO InvoiceItems VALUES ('9dd576c5-d7ee-4e00-a653-b5c4727e5275', 1, 1, 2);
-INSERT INTO InvoiceItems VALUES ('74645d1c-9d33-417f-bce7-ba3bc7079776', 2, 1, 4);
-INSERT INTO InvoiceItems VALUES ('8ada6be8-a81c-4275-9bec-514ba37c1d7d', 1, 1, 50);
-INSERT INTO InvoiceItems VALUES ('8ada6be8-a81c-4275-9bec-514ba37c1d7d', 3, 2, 2);
-INSERT INTO InvoiceItems VALUES ('74645d1c-9d33-417f-bce7-ba3bc7079776', 2, 2, 2);
+INSERT INTO InvoiceItems VALUES ('9dd576c5-d7ee-4e00-a653-b5c4727e5275', 3, 1, 1, 2);
+INSERT INTO InvoiceItems VALUES ('9dd576c5-d7ee-4e00-a653-b5c4727e5275', 3, 2, 1, 4);
+INSERT INTO InvoiceItems VALUES ('74645d1c-9d33-417f-bce7-ba3bc7079776', 3, 1, 1, 50);
+INSERT INTO InvoiceItems VALUES ('8ada6be8-a81c-4275-9bec-514ba37c1d7d', 4, 3, 2, 2);
+INSERT INTO InvoiceItems VALUES ('8ada6be8-a81c-4275-9bec-514ba37c1d7d', 4, 2, 2, 2);
