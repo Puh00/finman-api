@@ -48,7 +48,7 @@ CREATE TABLE Persons
 
 CREATE TABLE Invoices
 (
-    serial_no    UUID UNIQUE DEFAULT uuid_generate_v4(),
+    serial_no    UUID DEFAULT uuid_generate_v4(),
     VAT          INTEGER     NOT NULL DEFAULT 25,
     OCR          VARCHAR(16) NOT NULL,
     invoice_date DATE        NOT NULL,
@@ -56,6 +56,7 @@ CREATE TABLE Invoices
     bankgiro     VARCHAR(16),
     seller       INTEGER     REFERENCES Organizations (id),
     buyer        INTEGER     NOT NULL REFERENCES Customers (id),
+    UNIQUE (serial_no, seller),
     PRIMARY KEY (serial_no, seller)
 );
 
@@ -69,14 +70,14 @@ CREATE TABLE Items
     PRIMARY KEY (id, owner)
 );
 
-
 CREATE TABLE InvoiceItems
 (
     invoice    UUID,
+    seller     INTEGER,
     item_id    INTEGER,
     item_owner INTEGER,
     amount     INTEGER NOT NULL CHECK (amount >= 0),
-    PRIMARY KEY (invoice, item_id, item_owner),
+    PRIMARY KEY (invoice, seller, item_id, item_owner),
     FOREIGN KEY (item_id, item_owner) REFERENCES Items (id, owner),
-    FOREIGN KEY (invoice) REFERENCES Invoices (serial_no)
+    FOREIGN KEY (invoice, seller) REFERENCES Invoices (serial_no, seller)
 );
