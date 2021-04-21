@@ -6,4 +6,4 @@
 
 This is the backend of the DAT257 project by team **_Sony Walkman WM-FX199_**.
 
-To see the frontend, refer to the this link: [finman-frontend](https://github.com/gabrielbrattgard/finman-frontend)
+To see the frontend, refer to the following link: [finman-frontend](https://github.com/gabrielbrattgard/finman-frontend)
