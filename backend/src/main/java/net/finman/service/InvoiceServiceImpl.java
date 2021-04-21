@@ -17,6 +17,6 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Transactional
     public void createInvoice(Invoice inv) throws ResourceNotCreatedException {
         invoiceDao.createInvoice(inv);
-        invoiceDao.addInvoiceItems(inv.getSerialNumber(), inv.getItems());
+        invoiceDao.addInvoiceItems(inv.getSerialNumber(), inv.getSeller(), inv.getItems());
     }
 }
