@@ -12,10 +12,10 @@ public interface ProductService {
     /**
      * Creates a product.
      * 
-     * @param i Item to be stored in the database.
+     * @param item Item to be stored in the database.
      * @throws ResourceNotCreatedException If the sql insertion failed.
      */
-    void createProduct(Item i) throws ResourceNotCreatedException;
+    void createProduct(Item item) throws ResourceNotCreatedException;
 
     /**
      * Retrieves all products related to the specified owner.

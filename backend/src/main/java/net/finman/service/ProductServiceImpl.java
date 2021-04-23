@@ -20,8 +20,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public void createProduct(Item i) throws ResourceNotCreatedException {
-        productDao.createProduct(i);
+    public void createProduct(Item item) throws ResourceNotCreatedException {
+        productDao.createProduct(item);
     }
 
     @Override
