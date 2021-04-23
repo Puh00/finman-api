@@ -1,0 +1,25 @@
+package net.finman.controller;
+
+import net.finman.exception.ResourceNotCreatedException;
+import net.finman.model.Item;
+import net.finman.service.ProductService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/api")
+public class ProductController {
+
+    @Autowired
+    ProductService productService;
+
+    @PostMapping("/products")
+    public ResponseEntity<?> createProduct(@RequestBody Item i) throws ResourceNotCreatedException {
+        productService.createProduct(i);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+}

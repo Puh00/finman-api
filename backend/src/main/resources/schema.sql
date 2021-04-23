@@ -62,21 +62,20 @@ CREATE TABLE Invoices
 
 CREATE TABLE Items
 (
-    id    INTEGER,
     owner INTEGER REFERENCES Accounts (id),
     name  VARCHAR(128) NOT NULL,
     price INTEGER      NOT NULL,
-    PRIMARY KEY (id, owner)
+    PRIMARY KEY (owner, name)
 );
 
 CREATE TABLE InvoiceItems
 (
-    invoice    UUID,
-    seller     INTEGER,
-    item_id    INTEGER,
-    item_owner INTEGER,
-    amount     INTEGER NOT NULL CHECK (amount >= 0),
-    PRIMARY KEY (invoice, seller, item_id, item_owner),
-    FOREIGN KEY (item_id, item_owner) REFERENCES Items (id, owner),
+    invoice UUID,
+    seller  INTEGER,
+    name    VARCHAR(128),
+    owner   INTEGER,
+    amount  INTEGER NOT NULL CHECK (amount >= 0),
+    PRIMARY KEY (invoice, seller, owner, name),
+    FOREIGN KEY (owner, name) REFERENCES Items (owner, name),
     FOREIGN KEY (invoice, seller) REFERENCES Invoices (serial_no, seller)
 );
