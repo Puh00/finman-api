@@ -24,4 +24,9 @@ public class ErrorHandler {
     public ResponseEntity<?> resourceNotDeletedException(ResourceNotDeletedException e) {
         return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(ResourceNotUpdatedException.class)
+    public ResponseEntity<?> resourceNotUpdatedException(ResourceNotUpdatedException e) {
+        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.BAD_REQUEST);
+    }
 }

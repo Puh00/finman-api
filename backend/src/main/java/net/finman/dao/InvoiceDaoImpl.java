@@ -20,7 +20,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
     private NamedParameterJdbcTemplate template;
 
     private static final String INSERT_INVOICE = "INSERT INTO Invoices(serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, buyer) VALUES (:serial_no, :OCR, :invoice_date, :expiry_date, :bankgiro, :seller, :buyer)";
-    private static final String INSERT_INVOICE_ITEMS = "INSERT INTO InvoiceItems VALUES (:invoice, :seller, :item_id, :item_owner, :amount)";
+    private static final String INSERT_INVOICE_ITEMS = "INSERT INTO InvoiceItems VALUES (:invoice, :seller, :name, :item_owner, :amount)";
 
     @Override
     public void createInvoice(Invoice inv) throws ResourceNotCreatedException {
@@ -48,8 +48,8 @@ public class InvoiceDaoImpl implements InvoiceDao {
                 SqlParameterSource itemsParams = new MapSqlParameterSource()
                         .addValue("invoice", serialNumber)
                         .addValue("seller", seller)
-                        .addValue("owner", i.getOwner())
                         .addValue("name", i.getName())
+                        .addValue("item_owner", i.getOwner())
                         .addValue("amount", i.getAmount());
                 template.update(INSERT_INVOICE_ITEMS, itemsParams);
             }
