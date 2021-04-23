@@ -1,0 +1,20 @@
+
+# What do I want to learn or understand better?
+Overall I would say that I've been quite passive in the meetings up till this point.
+So something I would like to improve on is to be somehow more active during meetings. 
+
+# How can I help someone else, or the entire team, to learn something new?
+From next week we will start changing the teams so that everyone gets a chance
+to contribute to the source code. I assume that Yenan and I will take turns in
+who stays in the backend. So I will maybe go to the GUI team and in the week after
+that we will switch roles with each other. We from IT actually had a UI/UX course 
+before so I hope I can share my knowledge from that course, although I might have 
+forgotten a bit since it has been a while.
+
+# What is my contribution towards the team’s use of Scrum?
+By taking part in this week's planning phase of the sprint.
+
+# What is my contribution towards the team’s deliveries?
+This week we in the backend actually managed to finish all of our tasks, i.e 
+CRUD operations for a 'Product'. 
+
