@@ -48,8 +48,8 @@ public class InvoiceDaoImpl implements InvoiceDao {
                 SqlParameterSource itemsParams = new MapSqlParameterSource()
                         .addValue("invoice", serialNumber)
                         .addValue("seller", seller)
-                        .addValue("item_id", i.getId())
-                        .addValue("item_owner", i.getOwner())
+                        .addValue("owner", i.getOwner())
+                        .addValue("name", i.getName())
                         .addValue("amount", i.getAmount());
                 template.update(INSERT_INVOICE_ITEMS, itemsParams);
             }
