@@ -1,0 +1,27 @@
+# what do I want to learn or understand better?
+The pair-programming sessions were pretty useful since I was taught a lot of
+springboot and am now feeling rather confident to tackle this on my own (thanks Alex).
+The next step would probably be the frontend but that depends on next week's
+role assigments. So as for now I will just keep on learning the backend so that
+I may help someone else with the spring.
+
+# how can I help someone else, or the entire team, to learn something new?
+As usual through a shared screen and a voice chat to learn/fix something
+together. If I stay in backend team after next week's role assigment then I
+will also be able to help out my other teammates to learn about spring.
+
+# what is my contribution towards the team’s use of Scrum?
+I wrote some tasks and the subtasks needed in order to complete those tasks.
+Those tasks are of course, related to the backend aspect of the user story
+since that is my assigned role. There were some obscurities in terms of what
+exactly the PO wanted and as a result there were also a lot modifications made
+to the tasks that are already defined. If we had a better understanding of what
+we needed to do then the situation would have been alleviated. In order to
+achieve that we need to focus on the MVP as well as to push the POs to be more
+specific of what they wanted.
+  
+# what is my contribution towards the team’s deliveries?
+Me and Alex managed to finish the tasks defined at the start of the week. I am
+fairly content with this result and aim to keep or even improve it in the
+future sprints. Of course, for that to be possible we need to be reasonable
+with our workload and estimate the hours it will take.
