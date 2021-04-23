@@ -76,6 +76,5 @@ CREATE TABLE InvoiceItems
     owner   INTEGER,
     amount  INTEGER NOT NULL CHECK (amount >= 0),
     PRIMARY KEY (invoice, seller, owner, name),
-    FOREIGN KEY (owner, name) REFERENCES Items (owner, name),
     FOREIGN KEY (invoice, seller) REFERENCES Invoices (serial_no, seller)
 );
