@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.exception.ResourceNotDeletedException;
 import net.finman.exception.ResourceNotFoundException;
+import net.finman.exception.ResourceNotUpdatedException;
 import net.finman.mapper.ProductMapper;
 import net.finman.model.Item;
 
@@ -21,6 +22,7 @@ public class ProductDaoImpl implements ProductDao {
     private static final String INSERT_PRODUCT = "INSERT INTO Items(owner, name, price) VALUES (:owner, :name, :price)";
     private static final String SELECT_ALL = "SELECT * FROM Items WHERE owner=:owner";
     private static final String DELETE_PRODUCT = "DELETE FROM Items WHERE (owner=:owner AND name=:name)";
+    private static final String UPDATE_PRODUCT = "UPDATE Items SET name=:newName, price=:price WHERE owner=:owner AND name=:oldName";
 
     @Autowired
     private NamedParameterJdbcTemplate template;
@@ -67,5 +69,23 @@ public class ProductDaoImpl implements ProductDao {
         } catch (DataAccessException e) {
             throw new ResourceNotDeletedException("Failed deleting the item", e.getMessage());
         }
+    }
+
+    @Override
+    public void updateProduct(int owner, String name, Item item) throws ResourceNotFoundException, ResourceNotUpdatedException {
+         try {
+            SqlParameterSource itemParams = new MapSqlParameterSource()
+                    .addValue("newName", item.getName())
+                    .addValue("price", item.getPrice())
+                    .addValue("oldName", name)
+                    .addValue("owner", owner);
+
+            int affectedRows = template.update(UPDATE_PRODUCT, itemParams);
+            
+            if (affectedRows == 0)
+                throw new ResourceNotFoundException("Resource does not exist");
+        } catch (DataAccessException e) {
+            throw new ResourceNotUpdatedException("Failed updating the item", e.getMessage());
+        }       
     }
 }

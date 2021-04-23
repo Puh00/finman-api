@@ -3,6 +3,7 @@ package net.finman.controller;
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.exception.ResourceNotDeletedException;
 import net.finman.exception.ResourceNotFoundException;
+import net.finman.exception.ResourceNotUpdatedException;
 import net.finman.model.Item;
 import net.finman.service.ProductService;
 
@@ -31,8 +32,16 @@ public class ProductController {
     }
 
     @DeleteMapping("/products/{owner}/{name}")
-    public ResponseEntity<?> deleteProduct(@PathVariable int owner, @PathVariable String name) throws ResourceNotFoundException, ResourceNotDeletedException {
+    public ResponseEntity<?> deleteProduct(@PathVariable int owner, @PathVariable String name)
+            throws ResourceNotFoundException, ResourceNotDeletedException {
         productService.deleteProduct(owner, name);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/products/{owner}/{name}")
+    public ResponseEntity<?> updateProduct(@PathVariable int owner, @PathVariable String name, @RequestBody Item item)
+            throws ResourceNotFoundException, ResourceNotUpdatedException {
+        productService.updateProduct(owner, name, item);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
