@@ -1,5 +1,7 @@
 package net.finman.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -8,12 +10,15 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import net.finman.exception.ResourceNotCreatedException;
+import net.finman.exception.ResourceNotFoundException;
+import net.finman.mapper.ProductMapper;
 import net.finman.model.Item;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
 
     private static final String INSERT_PRODUCT = "INSERT INTO Items(owner, name, price) VALUES (:owner, :name, :price)";
+    private static final String SELECT_ALL = "SELECT * FROM Items WHERE owner=:owner";
 
     @Autowired
     private NamedParameterJdbcTemplate template;
@@ -28,6 +33,21 @@ public class ProductDaoImpl implements ProductDao {
             template.update(INSERT_PRODUCT, itemParams);
         } catch (DataAccessException e) {
             throw new ResourceNotCreatedException("Failed to add the item!", e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Item> getProductsOwnedBy(int owner) throws ResourceNotFoundException {
+        try {
+            ProductMapper mapper = new ProductMapper();
+            SqlParameterSource itemParams = new MapSqlParameterSource().addValue("owner", owner);
+            List<Item> products = template.query(SELECT_ALL, itemParams, mapper);
+
+            if (products.isEmpty())
+                throw new ResourceNotFoundException("No items were found");
+            return products;
+        } catch (DataAccessException e) {
+            throw new ResourceNotFoundException("Error commnucating with database", e.getMessage());
         }
     }
 }
