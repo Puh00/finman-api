@@ -10,6 +10,7 @@ import net.finman.dao.ProductDao;
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.exception.ResourceNotDeletedException;
 import net.finman.exception.ResourceNotFoundException;
+import net.finman.exception.ResourceNotUpdatedException;
 import net.finman.model.Item;
 
 @Service
@@ -31,5 +32,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(int owner, String name) throws ResourceNotDeletedException, ResourceNotFoundException {
         productDao.deleteProduct(owner, name);
+    }
+
+    @Override
+    public void updateProduct(int owner, String name, Item item)
+            throws ResourceNotFoundException, ResourceNotUpdatedException {
+        productDao.updateProduct(owner, name, item);
+
     }
 }
