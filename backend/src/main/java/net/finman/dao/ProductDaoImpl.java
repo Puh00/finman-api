@@ -28,12 +28,12 @@ public class ProductDaoImpl implements ProductDao {
     private NamedParameterJdbcTemplate template;
 
     @Override
-    public void createProduct(Item i) throws ResourceNotCreatedException {
+    public void createProduct(Item item) throws ResourceNotCreatedException {
         try {
             SqlParameterSource itemParams = new MapSqlParameterSource()
-                    .addValue("owner", i.getOwner())
-                    .addValue("name", i.getName())
-                    .addValue("price", i.getPrice());
+                    .addValue("owner", item.getOwner())
+                    .addValue("name", item.getName())
+                    .addValue("price", item.getPrice());
             template.update(INSERT_PRODUCT, itemParams);
         } catch (DataAccessException e) {
             throw new ResourceNotCreatedException("Failed to add the item!", e.getMessage());
