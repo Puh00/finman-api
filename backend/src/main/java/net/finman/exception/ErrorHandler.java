@@ -19,4 +19,9 @@ public class ErrorHandler {
     public ResponseEntity<?> resourceNotFoundException(ResourceNotFoundException e) {
         return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(ResourceNotDeletedException.class)
+    public ResponseEntity<?> resourceNotDeletedException(ResourceNotDeletedException e) {
+        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.BAD_REQUEST);
+    }
 }

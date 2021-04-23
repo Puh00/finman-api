@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import net.finman.dao.ProductDao;
 import net.finman.exception.ResourceNotCreatedException;
+import net.finman.exception.ResourceNotDeletedException;
 import net.finman.exception.ResourceNotFoundException;
 import net.finman.model.Item;
 
@@ -25,5 +26,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Item> getProductsOwnedBy(int owner) throws ResourceNotFoundException {
         return productDao.getProductsOwnedBy(owner);
+    }
+
+    @Override
+    public void deleteProduct(int owner, String name) throws ResourceNotDeletedException, ResourceNotFoundException {
+        productDao.deleteProduct(owner, name);
     }
 }
