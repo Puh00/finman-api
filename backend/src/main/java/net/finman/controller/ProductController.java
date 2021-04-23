@@ -1,6 +1,7 @@
 package net.finman.controller;
 
 import net.finman.exception.ResourceNotCreatedException;
+import net.finman.exception.ResourceNotFoundException;
 import net.finman.model.Item;
 import net.finman.service.ProductService;
 
@@ -21,5 +22,10 @@ public class ProductController {
     public ResponseEntity<?> createProduct(@RequestBody Item i) throws ResourceNotCreatedException {
         productService.createProduct(i);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/products/{owner}")
+    public ResponseEntity<?> getProductsOwnedBy(@PathVariable int owner) throws ResourceNotFoundException {
+        return new ResponseEntity<>(productService.getProductsOwnedBy(owner), HttpStatus.FOUND);
     }
 }

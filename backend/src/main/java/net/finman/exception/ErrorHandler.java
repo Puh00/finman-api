@@ -14,4 +14,9 @@ public class ErrorHandler {
     public ResponseEntity<?> resourceNotCreatedException(ResourceNotCreatedException e) {
         return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<?> resourceNotFoundException(ResourceNotFoundException e) {
+        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.NOT_FOUND);
+    }
 }
