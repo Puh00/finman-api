@@ -11,7 +11,6 @@ public class Invoice {
     private String invoiceDate;
     private String expiryDate;
     private String bankgiro;
-    private String regNumber;
     private int seller;
     private int buyer;
     private List<Item> items;
@@ -70,14 +69,6 @@ public class Invoice {
 
     public void setBankgiro(String bankgiro) {
         this.bankgiro = bankgiro;
-    }
-
-    public String getRegNumber() {
-        return regNumber;
-    }
-
-    public void setRegNumber(String regNumber) {
-        this.regNumber = regNumber;
     }
 
     public int getSeller() {

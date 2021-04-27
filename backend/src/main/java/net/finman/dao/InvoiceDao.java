@@ -1,6 +1,7 @@
 package net.finman.dao;
 
 import net.finman.exception.ResourceNotCreatedException;
+import net.finman.exception.ResourceNotFoundException;
 import net.finman.model.Invoice;
 import net.finman.model.Item;
 
@@ -25,4 +26,8 @@ public interface InvoiceDao {
      * @throws ResourceNotCreatedException If the sql insertion failed.
      */
     void addInvoiceItems(UUID serialNumber, int seller, List<Item> items) throws ResourceNotCreatedException;
+
+    List<Invoice> getInvoices(int buyer) throws ResourceNotFoundException;
+
+    List<Item> getInvoiceItems(UUID invoice, int seller) throws ResourceNotFoundException;
 }

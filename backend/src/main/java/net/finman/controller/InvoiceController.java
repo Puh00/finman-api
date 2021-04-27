@@ -1,6 +1,7 @@
 package net.finman.controller;
 
 import net.finman.exception.ResourceNotCreatedException;
+import net.finman.exception.ResourceNotFoundException;
 import net.finman.model.Invoice;
 import net.finman.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,10 @@ public class InvoiceController {
     public ResponseEntity<?> createInvoice(@RequestBody Invoice inv) throws ResourceNotCreatedException {
         invoiceService.createInvoice(inv);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/invoices/{buyer}")
+    public ResponseEntity<?> getInvoices(@PathVariable int buyer) throws ResourceNotCreatedException, ResourceNotFoundException {
+        return new ResponseEntity<>(invoiceService.getInvoices(buyer), HttpStatus.FOUND);
     }
 }
