@@ -25,9 +25,9 @@ public interface InvoiceDao {
      * @param items        Items to be added to an invoice.
      * @throws ResourceNotCreatedException If the sql insertion failed.
      */
-    void addInvoiceItems(UUID serialNumber, int seller, List<Item> items) throws ResourceNotCreatedException;
+    void addInvoiceItems(UUID serialNumber, String seller, List<Item> items) throws ResourceNotCreatedException;
 
-    List<Invoice> getInvoices(int buyer) throws ResourceNotFoundException;
+    List<Invoice> getInvoices(String source) throws ResourceNotFoundException;
 
-    List<Item> getInvoiceItems(UUID invoice, int seller) throws ResourceNotFoundException;
+    List<Item> getInvoiceItems(UUID invoice, String seller) throws ResourceNotFoundException;
 }

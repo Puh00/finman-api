@@ -24,7 +24,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
 
     private static final String INSERT_INVOICE = "INSERT INTO Invoices(serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, buyer) VALUES (:serial_no, :OCR, :invoice_date, :expiry_date, :bankgiro, :seller, :buyer)";
     private static final String INSERT_INVOICE_ITEMS = "INSERT INTO InvoiceItems VALUES (:invoice, :seller, :name, :item_owner, :amount)";
-    private static final String GET_INVOICES = "SELECT * FROM Invoices WHERE Invoices.buyer=:buyer";
+    private static final String GET_INVOICES = "SELECT * FROM Invoices WHERE owner_id=:owner_id OR buyer=:buyer";
     private static final String GET_INVOICE_ITEMS = "SELECT * FROM InvoiceItems NATURAL JOIN Items WHERE invoice=:invoice AND seller=:seller";
 
     @Override
@@ -47,7 +47,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
     }
 
     @Override
-    public void addInvoiceItems(UUID serialNumber, int seller, List<Item> items) throws ResourceNotCreatedException {
+    public void addInvoiceItems(UUID serialNumber, String seller, List<Item> items) throws ResourceNotCreatedException {
         try {
             for (Item i : items) {
                 SqlParameterSource itemsParams = new MapSqlParameterSource()
@@ -64,10 +64,10 @@ public class InvoiceDaoImpl implements InvoiceDao {
     }
 
     @Override
-    public List<Invoice> getInvoices(int buyer) throws ResourceNotFoundException {
+    public List<Invoice> getInvoices(String source) throws ResourceNotFoundException {
         try {
             SqlParameterSource invoiceParams = new MapSqlParameterSource()
-                    .addValue("buyer", buyer);
+                    .addValue("source", source);
             
             InvoiceMapper mapper = new InvoiceMapper();
             List<Invoice> invoices = template.query(GET_INVOICES, invoiceParams, mapper);
@@ -87,7 +87,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
     }
 
     @Override
-    public List<Item> getInvoiceItems(UUID invoice, int seller) throws ResourceNotFoundException {
+    public List<Item> getInvoiceItems(UUID invoice, String seller) throws ResourceNotFoundException {
         try {
             SqlParameterSource invoiceItemParams = new MapSqlParameterSource()
                     .addValue("invoice", invoice)
