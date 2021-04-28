@@ -24,7 +24,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
-    public List<Invoice> getInvoices(int buyer) throws ResourceNotFoundException {
-        return invoiceDao.getInvoices(buyer);
+    public List<Invoice> getInvoices(String source) throws ResourceNotFoundException {
+        return invoiceDao.getInvoices(source);
     }
 }

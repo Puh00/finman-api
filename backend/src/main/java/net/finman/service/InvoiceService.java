@@ -17,5 +17,5 @@ public interface InvoiceService {
     void createInvoice(Invoice inv) throws ResourceNotCreatedException;
 
 
-    List<Invoice> getInvoices(int buyer) throws ResourceNotFoundException;
+    List<Invoice> getInvoices(String source) throws ResourceNotFoundException;
 }

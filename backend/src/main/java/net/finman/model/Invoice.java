@@ -4,16 +4,25 @@ import java.util.List;
 import java.util.UUID;
 
 public class Invoice {
+    private String source;
     private UUID serialNumber;
-    private String invoiceNumber;
     private int vat;
     private String ocr;
     private String invoiceDate;
     private String expiryDate;
     private String bankgiro;
-    private int seller;
+    private String seller;
     private int buyer;
+    private boolean isPaid;
     private List<Item> items;
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getSource() {
+        return source;
+    }
 
     public void setSerialNumber(UUID serialNumber) {
         this.serialNumber = serialNumber;
@@ -21,14 +30,6 @@ public class Invoice {
 
     public UUID getSerialNumber() {
         return serialNumber;
-    }
-
-    public String getInvoiceNumber() {
-        return invoiceNumber;
-    }
-
-    public void setInvoiceNumber(String invoiceNumber) {
-        this.invoiceNumber = invoiceNumber;
     }
 
     public int getVat() {
@@ -71,11 +72,11 @@ public class Invoice {
         this.bankgiro = bankgiro;
     }
 
-    public int getSeller() {
+    public String getSeller() {
         return seller;
     }
 
-    public void setSeller(int seller) {
+    public void setSeller(String seller) {
         this.seller = seller;
     }
 
@@ -85,6 +86,14 @@ public class Invoice {
 
     public void setBuyer(int buyer) {
         this.buyer = buyer;
+    }
+
+    public void setIsPaid(boolean isPaid) {
+        this.isPaid = isPaid;
+    }
+
+    public boolean getIsPaid() {
+        return isPaid;
     }
 
     public List<Item> getItems() {
