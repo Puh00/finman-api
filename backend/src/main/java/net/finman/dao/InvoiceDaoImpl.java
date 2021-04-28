@@ -22,9 +22,9 @@ public class InvoiceDaoImpl implements InvoiceDao {
     @Autowired
     private NamedParameterJdbcTemplate template;
 
-    private static final String INSERT_INVOICE = "INSERT INTO Invoices(serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, buyer) VALUES (:serial_no, :OCR, :invoice_date, :expiry_date, :bankgiro, :seller, :buyer)";
+    private static final String INSERT_INVOICE = "INSERT INTO Invoices(source, serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, buyer, is_paid) VALUES (:source, :serial_no, :OCR, :invoice_date, :expiry_date, :bankgiro, :seller, :buyer, :is_paid)";
     private static final String INSERT_INVOICE_ITEMS = "INSERT INTO InvoiceItems VALUES (:invoice, :seller, :name, :item_owner, :amount)";
-    private static final String GET_INVOICES = "SELECT * FROM Invoices WHERE owner_id=:owner_id OR buyer=:buyer";
+    private static final String GET_INVOICES = "SELECT DISTINCT * FROM InvoiceWithMail WHERE source=:source OR buyer_email=:buyer_email";
     private static final String GET_INVOICE_ITEMS = "SELECT * FROM InvoiceItems NATURAL JOIN Items WHERE invoice=:invoice AND seller=:seller";
 
     @Override
@@ -33,13 +33,15 @@ public class InvoiceDaoImpl implements InvoiceDao {
             inv.setSerialNumber(UUID.randomUUID());
 
             SqlParameterSource invoiceParams = new MapSqlParameterSource()
+                    .addValue("source", inv.getSource())
                     .addValue("serial_no", inv.getSerialNumber())
                     .addValue("OCR", inv.getOcr())
                     .addValue("invoice_date", inv.getInvoiceDate(), Types.DATE)
                     .addValue("expiry_date", inv.getExpiryDate(), Types.DATE)
                     .addValue("bankgiro", inv.getBankgiro())
                     .addValue("seller", inv.getSeller())
-                    .addValue("buyer", inv.getBuyer());
+                    .addValue("buyer", inv.getBuyer())
+                    .addValue("is_paid", inv.getIsPaid());
             template.update(INSERT_INVOICE, invoiceParams);
         } catch (DataAccessException e) {
             throw new ResourceNotCreatedException("Failed to create invoice", e.getMessage());
@@ -67,7 +69,8 @@ public class InvoiceDaoImpl implements InvoiceDao {
     public List<Invoice> getInvoices(String source) throws ResourceNotFoundException {
         try {
             SqlParameterSource invoiceParams = new MapSqlParameterSource()
-                    .addValue("source", source);
+                    .addValue("source", source)
+                    .addValue("buyer_email", source);
             
             InvoiceMapper mapper = new InvoiceMapper();
             List<Invoice> invoices = template.query(GET_INVOICES, invoiceParams, mapper);

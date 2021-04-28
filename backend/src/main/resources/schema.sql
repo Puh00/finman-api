@@ -73,3 +73,19 @@ CREATE TABLE InvoiceItems
     FOREIGN KEY (invoice, seller) REFERENCES Invoices (serial_no, seller)
 );
 
+CREATE VIEW InvoiceWithMail AS (
+    SELECT 
+        source,
+        serial_no,
+        VAT,
+        OCR,
+        invoice_date,
+        expiry_date,
+        bankgiro,
+        seller,
+        buyer,
+        email as buyer_email,
+        is_paid
+    FROM
+        Invoices LEFT OUTER JOIN Customers ON buyer=id
+);

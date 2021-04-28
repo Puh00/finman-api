@@ -24,7 +24,7 @@ public class InvoiceController {
     }
 
     @GetMapping("/invoices/{source}")
-    public ResponseEntity<?> getInvoices(@PathVariable String source) throws ResourceNotCreatedException, ResourceNotFoundException {
+    public ResponseEntity<?> getInvoices(@PathVariable String source) throws ResourceNotFoundException {
         return new ResponseEntity<>(invoiceService.getInvoices(source), HttpStatus.FOUND);
     }
 }
