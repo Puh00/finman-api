@@ -12,12 +12,6 @@ CREATE TABLE Accounts
     CHECK       (email LIKE '%@%.%')
 );
 
-CREATE TABLE Customers
-(
-    id    SERIAL PRIMARY KEY,
-    info  JSONB,
-    email VARCHAR(128)
-);
 
 CREATE TABLE Organizations
 (
@@ -48,7 +42,7 @@ CREATE TABLE Invoices
     expiry_date  DATE         NOT NULL,
     bankgiro     VARCHAR(16),
     seller       VARCHAR(128) REFERENCES Organizations (email),
-    buyer        SERIAL REFERENCES Customers (id),
+    customer     JSONB NOT NULL,
     is_paid      BOOLEAN DEFAULT FALSE,
     UNIQUE (serial_no, seller),
     PRIMARY KEY (serial_no, seller)
@@ -73,19 +67,4 @@ CREATE TABLE InvoiceItems
     FOREIGN KEY (invoice, seller) REFERENCES Invoices (serial_no, seller)
 );
 
-CREATE VIEW InvoiceWithMail AS (
-    SELECT 
-        source,
-        serial_no,
-        VAT,
-        OCR,
-        invoice_date,
-        expiry_date,
-        bankgiro,
-        seller,
-        buyer,
-        email as buyer_email,
-        is_paid
-    FROM
-        Invoices LEFT OUTER JOIN Customers ON buyer=id
-);
+
