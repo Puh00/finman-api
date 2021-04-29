@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 
 public class Invoice {
     private String source;
@@ -19,7 +18,6 @@ public class Invoice {
     private Customer customer;
     private boolean isPaid;
     private List<Item> items;
-   
 
     public void setSource(String source) {
         this.source = source;
@@ -93,7 +91,7 @@ public class Invoice {
         this.customer = customer;
     }
 
-    public void setCustomer(String customer){
+    public void setCustomer(String customer) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             this.customer = objectMapper.readValue(customer, Customer.class);
@@ -118,5 +116,4 @@ public class Invoice {
         this.items = items;
     }
 
-    
 }
