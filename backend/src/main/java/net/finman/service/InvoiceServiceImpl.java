@@ -23,6 +23,8 @@ public class InvoiceServiceImpl implements InvoiceService {
         invoiceDao.addInvoiceItems(inv.getSerialNumber(), inv.getSeller(), inv.getItems());
     }
 
+
+    
     @Override
     public List<Invoice> getInvoices(String source) throws ResourceNotFoundException {
         return invoiceDao.getInvoices(source);

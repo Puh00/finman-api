@@ -3,6 +3,10 @@ package net.finman.model;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+
 public class Invoice {
     private String source;
     private UUID serialNumber;
@@ -12,9 +16,10 @@ public class Invoice {
     private String expiryDate;
     private String bankgiro;
     private String seller;
-    private int buyer;
+    private Customer customer;
     private boolean isPaid;
     private List<Item> items;
+   
 
     public void setSource(String source) {
         this.source = source;
@@ -80,12 +85,21 @@ public class Invoice {
         this.seller = seller;
     }
 
-    public int getBuyer() {
-        return buyer;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setBuyer(int buyer) {
-        this.buyer = buyer;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setCustomer(String customer){
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            this.customer = objectMapper.readValue(customer, Customer.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setIsPaid(boolean isPaid) {
@@ -103,4 +117,6 @@ public class Invoice {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
+    
 }
