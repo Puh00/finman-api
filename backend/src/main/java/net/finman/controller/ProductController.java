@@ -27,19 +27,19 @@ public class ProductController {
     }
 
     @GetMapping("/products/{owner}")
-    public ResponseEntity<?> getProductsOwnedBy(@PathVariable int owner) throws ResourceNotFoundException {
+    public ResponseEntity<?> getProductsOwnedBy(@PathVariable String owner) throws ResourceNotFoundException {
         return new ResponseEntity<>(productService.getProductsOwnedBy(owner), HttpStatus.FOUND);
     }
 
     @DeleteMapping("/products/{owner}/{name}")
-    public ResponseEntity<?> deleteProduct(@PathVariable int owner, @PathVariable String name)
+    public ResponseEntity<?> deleteProduct(@PathVariable String owner, @PathVariable String name)
             throws ResourceNotFoundException, ResourceNotDeletedException {
         productService.deleteProduct(owner, name);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/products/{owner}/{name}")
-    public ResponseEntity<?> updateProduct(@PathVariable int owner, @PathVariable String name, @RequestBody Item item)
+    public ResponseEntity<?> updateProduct(@PathVariable String owner, @PathVariable String name, @RequestBody Item item)
             throws ResourceNotFoundException, ResourceNotUpdatedException {
         productService.updateProduct(owner, name, item);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
