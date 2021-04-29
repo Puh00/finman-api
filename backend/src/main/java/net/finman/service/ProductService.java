@@ -30,9 +30,9 @@ public interface ProductService {
      * Deletes a product from an account.
      * 
      * @param owner The account that owns the product.
-     * @param name The name of the product to be deleted.
+     * @param name  The name of the product to be deleted.
      * @throws ResourceNotDeletedException If the sql delete failed.
-     * @throws ResourceNotFoundException If the sql quety found nothing.
+     * @throws ResourceNotFoundException   If the sql quety found nothing.
      */
     void deleteProduct(int owner, String name) throws ResourceNotDeletedException, ResourceNotFoundException;
 
@@ -40,9 +40,9 @@ public interface ProductService {
      * Updates a product.
      * 
      * @param owner The account that owns the product.
-     * @param name The name of the product to be updated.
-     * @param item The new product.
-     * @throws ResourceNotFoundException If the sql query found nothing.
+     * @param name  The name of the product to be updated.
+     * @param item  The new product.
+     * @throws ResourceNotFoundException   If the sql query found nothing.
      * @throws ResourceNotUpdatedException If the sql update failed.
      */
     void updateProduct(int owner, String name, Item item) throws ResourceNotFoundException, ResourceNotUpdatedException;

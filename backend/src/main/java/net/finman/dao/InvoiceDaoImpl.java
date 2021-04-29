@@ -24,7 +24,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
 
     private static final String INSERT_INVOICE = "INSERT INTO Invoices(source, serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, customer, is_paid) VALUES (:source, :serial_no, :OCR, :invoice_date, :expiry_date, :bankgiro, :seller, :customer, :is_paid)";
     private static final String INSERT_INVOICE_ITEMS = "INSERT INTO InvoiceItems VALUES (:invoice, :seller, :name, :item_owner, :amount)";
-    private static final String GET_INVOICES = "SELECT DISTINCT * FROM (SELECT *, jsonb_path_query(customer, '$.email') :: text as email FROM Invoices) AS info WHERE info.source=:source OR info.email=:email";
+    private static final String GET_INVOICES = "SELECT DISTINCT * FROM (SELECT *, trim('\"' FROM jsonb_path_query(customer, '$.email') :: VARCHAR(128)) as email FROM Invoices) AS info WHERE info.source=:source OR info.email=:email";
     private static final String GET_INVOICE_ITEMS = "SELECT * FROM InvoiceItems NATURAL JOIN Items WHERE invoice=:invoice AND seller=:seller";
 
     @Override
