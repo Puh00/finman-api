@@ -1,16 +1,16 @@
 package net.finman.model;
 
 public class Item {
-    private int owner;
+    private String owner;
     private String name;
     private int price;
     private int amount;
 
-    public int getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(int owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 
