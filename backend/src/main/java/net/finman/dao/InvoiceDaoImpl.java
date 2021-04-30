@@ -15,7 +15,11 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Types;
 import java.util.List;
+import java.util.SplittableRandom;
 import java.util.UUID;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Repository
 public class InvoiceDaoImpl implements InvoiceDao {
@@ -31,7 +35,17 @@ public class InvoiceDaoImpl implements InvoiceDao {
     public void createInvoice(Invoice inv) throws ResourceNotCreatedException {
         try {
             inv.setSerialNumber(UUID.randomUUID());
+            inv.setBankgiro("556036-0793");
+            inv.setOcr(generateOcr());
+            ObjectMapper objectMapper = new ObjectMapper();
 
+            String customerJson = "";
+            try {
+                customerJson = objectMapper.writeValueAsString(inv.getCustomer());
+            } catch (JsonProcessingException e) {
+                throw new ResourceNotCreatedException("Invalid customer JSON!", e.getMessage());
+            }
+            
             SqlParameterSource invoiceParams = new MapSqlParameterSource()
                     .addValue("source", inv.getSource())
                     .addValue("serial_no", inv.getSerialNumber())
@@ -40,12 +54,19 @@ public class InvoiceDaoImpl implements InvoiceDao {
                     .addValue("expiry_date", inv.getExpiryDate(), Types.DATE)
                     .addValue("bankgiro", inv.getBankgiro())
                     .addValue("seller", inv.getSeller())
-                    .addValue("customer", inv.getCustomer())
+                    .addValue("customer", customerJson, Types.OTHER)
                     .addValue("is_paid", inv.getIsPaid());
             template.update(INSERT_INVOICE, invoiceParams);
         } catch (DataAccessException e) {
             throw new ResourceNotCreatedException("Failed to create invoice", e.getMessage());
         }
+    }
+
+    private String generateOcr(){
+        long ocr;
+        SplittableRandom rng = new SplittableRandom();
+        ocr = rng.longs(1, 1000000000, 9999999999l).sum();  
+        return Long.toString(ocr);
     }
 
     @Override
