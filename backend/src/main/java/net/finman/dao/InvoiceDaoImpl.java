@@ -65,7 +65,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
     private String generateOcr(){
         long ocr;
         SplittableRandom rng = new SplittableRandom();
-        ocr = rng.longs(1, 1000000000, 9999999999l).sum();  
+        ocr = rng.longs(1, 1000000000, 9999999999L).sum();  
         return Long.toString(ocr);
     }
 
