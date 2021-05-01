@@ -1,0 +1,27 @@
+
+# What do I want to learn or understand better?
+This week I switched to the frontend team and was introduced to their codebase.
+We had quite a difficult time this week with ReactJS. Especially concerning the
+process of passing data to child components. So I would like to become more
+familiar with ReactJS so we don't have to spend unnecessary time on these
+supposedly basic things.
+
+A good lesson learnt this week after spending 5 hours trying to get a library to work:
+    => RTFM
+
+# How can I help someone else, or the entire team, to learn something new?
+I could try to learn as much as possible about the libraries that we are going
+to use and then share this knowledge with the other team members if they need
+further explanation. 
+
+# What is my contribution towards the team’s use of Scrum?
+Last week we discussed how unstructured our meetings were so I was assigned to 
+create a meeting agenda for the sprint planning this week. I felt that it
+improved the overall efficiency of the meetings since we had established a set of 
+topics at the start and thus had a clear outline of the meeting. 
+I was the scrum master this week and I assume that this is one of the tasks that 
+a scrum master should do: facilitate sprint planning meetings.
+
+# What is my contribution towards the team’s deliveries?
+Making it possible to see all invoices and see an detailed view of an invoice (as a pdf).
+
