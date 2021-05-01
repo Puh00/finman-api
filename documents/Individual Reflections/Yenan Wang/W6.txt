@@ -1,0 +1,33 @@
+# what do I want to learn or understand better?
+This week we had planned two user stories, one was the focus while the other one
+was a backup in case we were finished too early. The backup user story was to
+send invoices to the customers through emails. This is completely foreign to me
+so I would like to dedicate some time to it to learn about how it works in SpringBoot.
+
+# how can I help someone else, or the entire team, to learn something new?
+This week I stayed in the backend while Alex switched his role with Ludvig.
+Ludvig is new to the backend so during the first pair-programming session I
+introduced him to the backend and showed him the basic program structure. Then
+during the later sessions we simply coded together and helped each other whenever
+there is a problem.
+
+# what is my contribution towards the team’s use of Scrum?
+As previously mentioned I stayed in the backend team this week. So I continued
+to write tasks for the backend part of the user story we chose this week, which
+was to see a list of invoices. We weren't sure who should see which invoices
+so we had to clarify that question during the PO-meeting. After the meeting we
+noticed that our database design was too complicated and difficult to work with
+and serves no real value to our PO. So we had to refactor our database to reduce
+the compexities and make it as minimal as possible. In the future however, I
+would like to be able to start small and then continuously iterate so that we
+don't repeat this again.
+  
+# what is my contribution towards the team’s deliveries?
+This week has mainly been refactoring and bug-fixing. Me and Ludvig were working
+on the functionality to retrieve an invoice from the backend. As mentioned above
+we noticed some problems with the database which caused us to be unable to
+retrieve the invoices in a desirable way. So we redesigned and refactored the
+database, more than we would it like to be. At least the feature is now implemented
+as we promised for this week. But this also taught us a lesson of why it's bad
+trying to prepare for the future, when you really should be trying to get it
+working first.
