@@ -3,6 +3,7 @@ package net.finman.model;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -87,11 +88,13 @@ public class Invoice {
         return customer;
     }
 
+    
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+    
 
-    public void setCustomer(String customer) {
+    public void convertAndSetCustomerJsonToObject(String customer) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             this.customer = objectMapper.readValue(customer, Customer.class);

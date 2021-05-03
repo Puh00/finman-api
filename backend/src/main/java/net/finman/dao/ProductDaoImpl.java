@@ -41,7 +41,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public List<Item> getProductsOwnedBy(int owner) throws ResourceNotFoundException {
+    public List<Item> getProductsOwnedBy(String owner) throws ResourceNotFoundException {
         try {
             ProductMapper mapper = new ProductMapper();
             SqlParameterSource itemParams = new MapSqlParameterSource().addValue("owner", owner);
@@ -56,7 +56,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public void deleteProduct(int owner, String name) throws ResourceNotDeletedException, ResourceNotFoundException {
+    public void deleteProduct(String owner, String name) throws ResourceNotDeletedException, ResourceNotFoundException {
         try {
             SqlParameterSource itemParams = new MapSqlParameterSource()
                     .addValue("owner", owner)
@@ -72,7 +72,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public void updateProduct(int owner, String name, Item item) throws ResourceNotFoundException, ResourceNotUpdatedException {
+    public void updateProduct(String owner, String name, Item item) throws ResourceNotFoundException, ResourceNotUpdatedException {
          try {
             SqlParameterSource itemParams = new MapSqlParameterSource()
                     .addValue("newName", item.getName())

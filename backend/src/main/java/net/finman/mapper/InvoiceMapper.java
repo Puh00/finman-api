@@ -21,7 +21,7 @@ public class InvoiceMapper implements RowMapper<Invoice> {
         invoice.setExpiryDate(rs.getString("expiry_date"));
         invoice.setBankgiro(rs.getString("bankgiro"));
         invoice.setSeller(rs.getString("seller"));
-        invoice.setCustomer(rs.getString("customer"));
+        invoice.convertAndSetCustomerJsonToObject(rs.getString("customer"));
         invoice.setIsPaid(rs.getBoolean("is_paid"));
         return invoice;
     }

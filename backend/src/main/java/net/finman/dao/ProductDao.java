@@ -20,30 +20,30 @@ public interface ProductDao {
     /**
      * Retrieves all products related to the specified owner.
      * 
-     * @param owner The account that owns the product.
+     * @param owner The email of the account that owns the product.
      * @return List of products.
      * @throws ResourceNotFoundException If the sql query found nothing.
      */
-    List<Item> getProductsOwnedBy(int owner) throws ResourceNotFoundException;
+    List<Item> getProductsOwnedBy(String owner) throws ResourceNotFoundException;
 
     /**
      * Deletes a product from an account.
      * 
-     * @param owner The account that owns the product.
+     * @param owner The email of the account that owns the product.
      * @param name  The name of the product to be deleted.
      * @throws ResourceNotDeletedException If the sql delete failed.
      * @throws ResourceNotFoundException   If the sql quety found nothing.
      */
-    void deleteProduct(int owner, String name) throws ResourceNotDeletedException, ResourceNotFoundException;
+    void deleteProduct(String owner, String name) throws ResourceNotDeletedException, ResourceNotFoundException;
 
     /**
      * Updates a product.
      * 
-     * @param owner The account that owns the product.
+     * @param owner The email of the account that owns the product.
      * @param name  The name of the product to be updated.
      * @param item  The new product.
      * @throws ResourceNotFoundException   If the sql query found nothing.
      * @throws ResourceNotUpdatedException If the sql update failed.
      */
-    void updateProduct(int owner, String name, Item item) throws ResourceNotFoundException, ResourceNotUpdatedException;
+    void updateProduct(String owner, String name, Item item) throws ResourceNotFoundException, ResourceNotUpdatedException;
 }
