@@ -28,7 +28,7 @@ public class ProductController {
 
     @GetMapping("/products/{owner}")
     public ResponseEntity<?> getProductsOwnedBy(@PathVariable String owner) throws ResourceNotFoundException {
-        return new ResponseEntity<>(productService.getProductsOwnedBy(owner), HttpStatus.FOUND);
+        return new ResponseEntity<>(productService.getProductsOwnedBy(owner), HttpStatus.OK);
     }
 
     @DeleteMapping("/products/{owner}/{name}")
