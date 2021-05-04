@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import net.finman.exception.EmailNotSentException;
 import net.finman.service.EmailService;
 
 @CrossOrigin(origins = "*")
@@ -26,33 +28,13 @@ public class EmailController {
 
     @Autowired
     private EmailService emailService;
-    
+
+    private static final String EMAIL_SUBJECT = "Invoice from A.Finman";
+    private static final String EMAIL_BODY = "Hello here is your invoice pls pay q:^)"; 
+
     @PostMapping("/send-invoice")
-	public ResponseEntity<?> sendInvoice(@RequestParam("file") MultipartFile file) {
-
-        File attachment = convertToFile(file);
-
-        try {
-            System.out.println("!!");
-            emailService.sendEmailWithAttachment("yenanw@mail.com", "Invoice from A.Finman", "Hello here is your invoice pls pay q:^)", attachment);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-            return ResponseEntity.notFound().build();
-        }
-        
-		return ResponseEntity.ok().build();
+	public ResponseEntity<?> sendInvoice(@RequestParam("file") MultipartFile file, @RequestParam("to") String to) throws EmailNotSentException {
+        emailService.sendEmailWithAttachment(to, EMAIL_SUBJECT, EMAIL_BODY, file);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
-
-
-    private File convertToFile(MultipartFile mulFile) {
-        File file = new File("src/main/resources/invoice.pdf");
-        System.out.println("!!!");
-        try {
-            mulFile.transferTo(file);
-        } catch (IllegalStateException | IOException e) {
-            e.printStackTrace();
-        }
-
-        return file;
-    }
 }

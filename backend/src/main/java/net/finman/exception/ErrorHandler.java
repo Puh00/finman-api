@@ -29,4 +29,8 @@ public class ErrorHandler {
     public ResponseEntity<?> resourceNotUpdatedException(ResourceNotUpdatedException e) {
         return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(EmailNotSentException.class)
+    public ResponseEntity<?> emailNotSendException(EmailNotSentException e) {
+        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.BAD_REQUEST);
+    }
 }
