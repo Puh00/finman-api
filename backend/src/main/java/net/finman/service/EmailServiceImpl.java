@@ -18,7 +18,8 @@ public class EmailServiceImpl implements EmailService {
     private JavaMailSender emailSender;
 
     @Override
-    public void sendEmailWithAttachment(String to, String subject, String text, InputStreamSource attachment) throws EmailNotSentException{
+    public void sendEmailWithAttachment(String to, String subject, String text, InputStreamSource attachment)
+            throws EmailNotSentException {
         try {
             MimeMessage message = emailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
@@ -34,5 +35,5 @@ public class EmailServiceImpl implements EmailService {
             throw new EmailNotSentException("The email was not sent!", e.getMessage());
         }
     }
-    
+
 }
