@@ -12,12 +12,9 @@ public interface EmailService {
      * Sends an email with an attachment to the given mail adress
      * 
      * @param to         The person to recieve the mail
-     * @param subject    Subject of mail
-     * @param text       Body of mail
      * @param attachment The attached file to the mail, should be invoice pdf
      * @throws EmailNotSentException
      * @throws MessagingException    When the email failed to send
      */
-    void sendEmailWithAttachment(String to, String subject, String text, InputStreamSource attachment)
-            throws EmailNotSentException;
+    void sendEmailWithAttachment(String to, InputStreamSource attachment) throws EmailNotSentException;
 }

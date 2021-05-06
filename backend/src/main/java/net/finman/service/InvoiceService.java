@@ -2,6 +2,8 @@ package net.finman.service;
 
 import java.util.List;
 
+import org.springframework.core.io.InputStreamSource;
+import net.finman.exception.EmailNotSentException;
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.exception.ResourceNotFoundException;
 import net.finman.model.Invoice;
@@ -13,8 +15,10 @@ public interface InvoiceService {
      *
      * @param inv Invoice.
      * @throws ResourceNotCreatedException If the sql insertion failed.
+     * @throws EmailNotSentException
      */
-    void createInvoice(Invoice inv) throws ResourceNotCreatedException;
+    void createAndSendInvoice(String invoiceJson, InputStreamSource pdf, String to)
+            throws ResourceNotCreatedException, EmailNotSentException;
 
     /**
      * Returns all invoices related to a specific user. Both the invoices the user

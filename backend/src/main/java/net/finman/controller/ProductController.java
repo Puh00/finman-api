@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
     @PostMapping("/products")
     public ResponseEntity<?> createProduct(@RequestBody Item i) throws ResourceNotCreatedException {
