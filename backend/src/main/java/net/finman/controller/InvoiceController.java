@@ -1,13 +1,17 @@
 package net.finman.controller;
 
+import net.finman.exception.EmailNotSentException;
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.exception.ResourceNotFoundException;
-import net.finman.model.Invoice;
 import net.finman.service.InvoiceService;
+
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -15,11 +19,19 @@ import org.springframework.web.bind.annotation.*;
 public class InvoiceController {
 
     @Autowired
-    InvoiceService invoiceService;
+    private InvoiceService invoiceService;
 
     @PostMapping("/invoices")
-    public ResponseEntity<?> createInvoice(@RequestBody Invoice inv) throws ResourceNotCreatedException {
-        invoiceService.createInvoice(inv);
+    public ResponseEntity<?> createAndSendInvoice(@RequestParam("invoice") MultipartFile invoiceJson,
+                                                  @RequestParam("file") MultipartFile pdf,
+                                                  @RequestParam("to") String to)
+            throws ResourceNotCreatedException, EmailNotSentException {
+
+        try {
+            invoiceService.createAndSendInvoice(new String(invoiceJson.getBytes()), pdf, to);
+        } catch (IOException e) {
+            throw new ResourceNotCreatedException("Invoice JSON is corrupt!", e.getMessage());
+        }
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
