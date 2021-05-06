@@ -10,12 +10,17 @@ import net.finman.model.Invoice;
 
 public interface InvoiceService {
     /**
-     * Creates an invoice along with its items and stores the invoice in the
-     * database. Changes nothing upon failure.
-     *
-     * @param inv Invoice.
-     * @throws ResourceNotCreatedException If the sql insertion failed.
-     * @throws EmailNotSentException
+     * Creates an invoice and sends it to the given mail address, if either the
+     * creation process failed or the email sending process is failed, everything is
+     * rolled back.
+     * 
+     * @param invoiceJson The JSON string of an invoice
+     * @param pdf         The pdf file of an invoice
+     * @param to          The mail address to send the invoice to
+     * @throws ResourceNotCreatedException If the invoice JSON failed to parse or
+     *                                     the database failed to create a new row
+     *                                     for this invoice
+     * @throws EmailNotSentException       If the email failed to send in some way
      */
     void createAndSendInvoice(String invoiceJson, InputStreamSource pdf, String to)
             throws ResourceNotCreatedException, EmailNotSentException;
