@@ -21,13 +21,10 @@ public class EmailController {
     @Autowired
     private EmailService emailService;
 
-    private static final String EMAIL_SUBJECT = "Invoice from A.Finman";
-    private static final String EMAIL_BODY = "Hello here is your invoice pls pay q:^)";
-
     @PostMapping("/send-invoice")
     public ResponseEntity<?> sendInvoice(@RequestParam("file") MultipartFile file, @RequestParam("to") String to)
             throws EmailNotSentException {
-        emailService.sendEmailWithAttachment(to, EMAIL_SUBJECT, EMAIL_BODY, file);
+        emailService.sendEmailWithAttachment(to, file);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
