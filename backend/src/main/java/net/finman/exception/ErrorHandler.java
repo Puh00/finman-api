@@ -12,7 +12,8 @@ public class ErrorHandler {
 
     @ExceptionHandler(ResourceNotCreatedException.class)
     public ResponseEntity<?> resourceNotCreatedException(ResourceNotCreatedException e) {
-        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()),
+                HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
@@ -22,11 +23,19 @@ public class ErrorHandler {
 
     @ExceptionHandler(ResourceNotDeletedException.class)
     public ResponseEntity<?> resourceNotDeletedException(ResourceNotDeletedException e) {
-        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()),
+                HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ResourceNotUpdatedException.class)
     public ResponseEntity<?> resourceNotUpdatedException(ResourceNotUpdatedException e) {
-        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()),
+                HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EmailNotSentException.class)
+    public ResponseEntity<?> emailNotSendException(EmailNotSentException e) {
+        return new ResponseEntity<>(new ErrorDetails(new Date(), e.getMessage(), e.getDetails()),
+                HttpStatus.BAD_REQUEST);
     }
 }
