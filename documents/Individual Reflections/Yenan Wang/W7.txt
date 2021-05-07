@@ -1,0 +1,32 @@
+# what do I want to learn or understand better?
+This week we have concluded that the MVP is mostly done. As long as the PO
+confirms it, then we can get started with the next iteration. For the backend
+part we will probably be focusing on the Spring Security and implement an
+authentication system. Now this is something new to me again, so I will spend
+some time learning and trying that out.
+
+# how can I help someone else, or the entire team, to learn something new?
+Last week has been working great and we proceeded to do the same pair-programming
+strategy this week. We have been coding together using a collaborative coding
+extension in VSCode and rotating around the host to make sure both me and Ludvig
+gets the most out of it. This is working great and I believe we will continue
+with the same procedure next week.
+
+# what is my contribution towards the team’s use of Scrum?
+Me and Ludvig tried to estimate this week's user story/task (to be able to send
+an email in theb backend). Initially we estimated it as a large task since we
+didn't know jack about how to send emails using spring and the research naturally
+takes a long time. But when we actually tried it, we finished it in one day on
+the Wednesday. After that we are left with nothing to do. We did not have a
+backup user story either which we really should've had. For future sprints, I 
+believe it is essential to carefully estimate the user stories and tasks. If we
+are ever unsure of how long a task will take due to lack of knowledge then we
+should at least prepare a backup in case of "premature" completion. 
+  
+# what is my contribution towards the team’s deliveries?
+We managed to finish the user story that requires the backend to be able to send
+an invoice through email. This marks the completion of the MVP according to the 
+specifications from the PO. Assuming the PO accepts it then we will be moving
+on to the next iteration. Of course, we will try to implement whatever the PO
+wants. It could be fine-tuning of some current features or a new feature such as
+login, security etc.
