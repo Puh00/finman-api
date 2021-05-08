@@ -1,0 +1,13 @@
+
+# What do I want to learn or understand better?
+Essentially same as last week.
+
+# How can I help someone else, or the entire team, to learn something new?
+Sharing what I've learnt and helping team members out whenever they're in need.
+
+# What is my contribution towards the team’s use of Scrum?
+By participating in the sprint planning. 
+
+# What is my contribution towards the team’s deliveries?
+Deployed the frontend to Netlify and the ability to send the pdf to the backend.
+
