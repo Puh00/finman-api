@@ -27,7 +27,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
     @Autowired
     private NamedParameterJdbcTemplate template;
 
-    private static final String INSERT_INVOICE = "INSERT INTO Invoices(source, serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, customer,  is_paid) VALUES (:source, :serial_no, :OCR, :invoice_date, :expiry_date, :bankgiro, :seller, :customer, :is_paid)";
+    private static final String INSERT_INVOICE = "INSERT INTO Invoices(source, serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, customer, invoice_items,  is_paid) VALUES (:source, :serial_no, :OCR, :invoice_date, :expiry_date, :bankgiro, :seller, :customer, :invoice_items, :is_paid)";
     private static final String INSERT_INVOICE_ITEMS = "INSERT INTO InvoiceItems VALUES (:invoice, :seller, :name, :item_owner, :amount)";
     private static final String GET_INVOICES = "SELECT DISTINCT * FROM (SELECT *, trim('\"' FROM jsonb_path_query(customer, '$.email') :: VARCHAR(128)) as email FROM Invoices) AS info WHERE info.source=:source OR info.email=:email";
     private static final String GET_INVOICE_ITEMS = "SELECT invoice_items FROM Invoices WHERE serial_no=:serial_no";
@@ -103,10 +103,10 @@ public class InvoiceDaoImpl implements InvoiceDao {
             InvoiceMapper mapper = new InvoiceMapper();
             List<Invoice> invoices = template.query(GET_INVOICES, invoiceParams, mapper);
 
-            //add the items to the invoices
-            for (Invoice invoice : invoices){
-                invoice.setInvoiceItems(getInvoiceItems(invoice.getSerialNumber(), invoice.getSeller()));
-            }
+            // //add the items to the invoices
+            // for (Invoice invoice : invoices){
+            //     invoice.setInvoiceItems(getInvoiceItems(invoice.getSerialNumber(), invoice.getSeller()));
+            // }
 
             if (invoices.size() == 0)
                 throw new ResourceNotFoundException("You don't have any invoices!", "");

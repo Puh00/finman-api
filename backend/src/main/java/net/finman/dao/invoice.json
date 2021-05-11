@@ -1,0 +1,27 @@
+{
+  "source": "berti@hotmail.se",
+  "invoiceDate": "2021-04-16",
+  "expiryDate": "2021-04-25",
+  "seller": "finman@block.chain",
+  "customer": {
+    "name": "Alex",
+    "address": "Noob Road 69",
+    "zipCode": "42069",
+    "city": "Gamer Town",
+    "country": "Sweden",
+    "telephone": "0760473396",
+    "email": "appa@gmail.se"
+  },
+  "invoice_items": [
+    {
+      "name": "Mayonnaise",
+      "price": 54,
+      "amount": 2
+    },
+    {
+      "name": "Premium Handcrafted Special Omega Deluxe Edition Lard",
+      "price": 169,
+      "amount": 2
+    }
+  ]
+}

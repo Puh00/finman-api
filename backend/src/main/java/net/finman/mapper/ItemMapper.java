@@ -17,6 +17,7 @@ public class ItemMapper implements RowMapper<InvoiceItem> {
 
         item.setName(rs.getString("name"));
         item.setAmount(rs.getInt("amount"));
+        item.setPrice(rs.getInt("price"));
         return item;
     }
 }

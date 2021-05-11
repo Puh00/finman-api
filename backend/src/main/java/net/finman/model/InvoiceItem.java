@@ -6,9 +6,16 @@ import java.util.List;
 public class InvoiceItem{
     private String name;
     private int amount;
+    private int price;
 
     public String getName() {
         return name;
+    }
+    public int getPrice() {
+        return price;
+    }
+    public void setPrice(int price) {
+        this.price = price;
     }
     public int getAmount() {
         return amount;
