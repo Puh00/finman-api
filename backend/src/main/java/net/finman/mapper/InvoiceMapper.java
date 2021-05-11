@@ -22,6 +22,7 @@ public class InvoiceMapper implements RowMapper<Invoice> {
         invoice.setBankgiro(rs.getString("bankgiro"));
         invoice.setSeller(rs.getString("seller"));
         invoice.convertAndSetCustomerJsonToObject(rs.getString("customer"));
+        invoice.convertAndSetInvoiceItemsJsonToObject(rs.getString("invoice_items"));
         invoice.setIsPaid(rs.getBoolean("is_paid"));
         return invoice;
     }

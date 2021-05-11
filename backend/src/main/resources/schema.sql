@@ -32,9 +32,18 @@ CREATE TABLE Members
     PRIMARY KEY (account, organization)
 );
 
+CREATE TABLE UserCustomers (
+    email VARCHAR(128),
+    customer JSONB,
+    PRIMARY KEY (customer, email),
+    FOREIGN KEY (email) REFERENCES Accounts(email)
+);
+
+-- Lägg till invoiceitems som attribute i detta table istället för ett eget table
+
 CREATE TABLE Invoices
 (
-    source       VARCHAR(128) REFERENCES Accounts(email),
+    source       VARCHAR(128),
     serial_no    UUID DEFAULT uuid_generate_v4(),
     VAT          INTEGER      NOT NULL DEFAULT 25,
     OCR          VARCHAR(16)  NOT NULL,
@@ -43,9 +52,11 @@ CREATE TABLE Invoices
     bankgiro     VARCHAR(16),
     seller       VARCHAR(128) REFERENCES Organizations (email),
     customer     JSONB NOT NULL,
+    invoice_items JSONB,
     is_paid      BOOLEAN DEFAULT FALSE,
     UNIQUE (serial_no, seller),
-    PRIMARY KEY (serial_no, seller)
+    PRIMARY KEY (serial_no, seller),
+    FOREIGN KEY (source, customer) REFERENCES UserCustomers(email, customer)
 );
 
 CREATE TABLE Items
@@ -56,15 +67,20 @@ CREATE TABLE Items
     PRIMARY KEY (owner, name)
 );
 
-CREATE TABLE InvoiceItems
-(
-    invoice UUID,
-    seller  VARCHAR(128),
-    name    VARCHAR(128),
-    owner   VARCHAR(128),
-    amount  INTEGER NOT NULL CHECK (amount >= 0),
-    PRIMARY KEY (invoice, seller, owner, name),
-    FOREIGN KEY (invoice, seller) REFERENCES Invoices (serial_no, seller)
+CREATE VIEW InvoiceItemsHelper AS (
+    SELECT serial_no, jsonb_array_elements(invoice_items) AS invoiceitems
+    FROM Invoices
 );
 
+-- Gör om invoiceitems till ett jsonobjekt som med customer
 
+-- CREATE TABLE InvoiceItems
+-- (
+--     invoice UUID,
+--     seller  VARCHAR(128),
+--     name    VARCHAR(128),
+--     owner   VARCHAR(128),
+--     amount  INTEGER NOT NULL CHECK (amount >= 0),
+--     PRIMARY KEY (invoice, seller, owner, name),
+--     FOREIGN KEY (invoice, seller) REFERENCES Invoices (serial_no, seller)
+-- );

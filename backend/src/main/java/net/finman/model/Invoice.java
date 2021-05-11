@@ -1,9 +1,14 @@
+
 package net.finman.model;
 
+
+import java.sql.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Invoice {
@@ -17,11 +22,12 @@ public class Invoice {
     private String seller;
     private Customer customer;
     private boolean isPaid;
-    private List<Item> items;
+    private List<InvoiceItem> invoiceItems;
 
     public void setSource(String source) {
         this.source = source;
     }
+
 
     public String getSource() {
         return source;
@@ -87,11 +93,11 @@ public class Invoice {
         return customer;
     }
 
-    
+
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-    
+
 
     public void convertAndSetCustomerJsonToObject(String customer) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -110,12 +116,23 @@ public class Invoice {
         return isPaid;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<InvoiceItem> getInvoiceItems() {
+        return invoiceItems;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setInvoiceItems(List<InvoiceItem> invoiceItems) {
+        this.invoiceItems = invoiceItems;
     }
+
+    public void convertAndSetInvoiceItemsJsonToObject(String invoiceItems) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            this.invoiceItems = Arrays.asList(objectMapper.readValue(invoiceItems, InvoiceItem[].class));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

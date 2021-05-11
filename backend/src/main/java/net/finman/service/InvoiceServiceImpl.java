@@ -1,3 +1,4 @@
+
 package net.finman.service;
 
 import net.finman.dao.InvoiceDao;
@@ -38,7 +39,7 @@ public class InvoiceServiceImpl implements InvoiceService {
             invoice = objectMapper.readValue(invoiceJson, Invoice.class);
 
             invoiceDao.createInvoice(invoice);
-            invoiceDao.addInvoiceItems(invoice.getSerialNumber(), invoice.getSeller(), invoice.getItems());
+            //invoiceDao.addInvoiceItems(invoice.getSerialNumber(), invoice.getSeller(), invoice.getItems());
         } catch (JsonProcessingException e) {
             throw new ResourceNotCreatedException("Invalid invoice JSON!", e.getMessage());
         }
