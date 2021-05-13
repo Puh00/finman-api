@@ -16,7 +16,7 @@ public class AccountDaoImpl implements AccountDao {
     @Autowired
     private NamedParameterJdbcTemplate template;
 
-    private static final String INSERST_ACCOUNT = "INSERT INTO Accounts VALUES (:name, :email, :telephone, :password)";
+    private static final String INSERT_ACCOUNT = "INSERT INTO Accounts VALUES (:name, :email, :telephone, :password)";
 
     @Override
     public void createAccount(Account account) throws ResourceNotCreatedException {
@@ -27,7 +27,7 @@ public class AccountDaoImpl implements AccountDao {
                     .addValue("telephone", account.getTelephone())
                     .addValue("password", account.getPassword());
 
-            template.update(INSERST_ACCOUNT, accountParams);
+            template.update(INSERT_ACCOUNT, accountParams);
         } catch (DataAccessException e) {
             throw new ResourceNotCreatedException("Could not create account!", e.getMessage());
         }

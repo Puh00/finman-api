@@ -6,7 +6,6 @@ import net.finman.mapper.InvoiceMapper;
 import net.finman.mapper.ItemMapper;
 import net.finman.model.Invoice;
 import net.finman.model.InvoiceItem;
-import net.finman.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -77,21 +76,6 @@ public class InvoiceDaoImpl implements InvoiceDao {
         return Long.toString(ocr);
     }
 
-    @Override
-    public void addInvoiceItems(UUID serialNumber, String seller, List<InvoiceItem> items) throws ResourceNotCreatedException {
-        try {
-            for (InvoiceItem i : items) {
-                SqlParameterSource itemsParams = new MapSqlParameterSource()
-                        .addValue("invoice", serialNumber)
-                        .addValue("seller", seller)
-                        .addValue("name", i.getName())
-                        .addValue("amount", i.getAmount());
-                template.update(INSERT_INVOICE_ITEMS, itemsParams);
-            }
-        } catch (DataAccessException e) {
-            throw new ResourceNotCreatedException("Failed to add items to invoice", e.getMessage());
-        }
-    }
 
     @Override
     public List<Invoice> getInvoices(String source) throws ResourceNotFoundException {
@@ -103,10 +87,6 @@ public class InvoiceDaoImpl implements InvoiceDao {
             InvoiceMapper mapper = new InvoiceMapper();
             List<Invoice> invoices = template.query(GET_INVOICES, invoiceParams, mapper);
 
-            // //add the items to the invoices
-            // for (Invoice invoice : invoices){
-            //     invoice.setInvoiceItems(getInvoiceItems(invoice.getSerialNumber(), invoice.getSeller()));
-            // }
 
             if (invoices.size() == 0)
                 throw new ResourceNotFoundException("You don't have any invoices!", "");
@@ -117,20 +97,5 @@ public class InvoiceDaoImpl implements InvoiceDao {
         }
     }
 
-    @Override
-    public List<InvoiceItem> getInvoiceItems(UUID serial_no, String seller) throws ResourceNotFoundException {
-        try {
-            SqlParameterSource invoiceItemParams = new MapSqlParameterSource()
-                    .addValue("serial_no", serial_no)
-                    .addValue("seller", seller);
-
-            ItemMapper mapper = new ItemMapper();
-            List<InvoiceItem> items = template.query(GET_INVOICE_ITEMS, invoiceItemParams, mapper);
-
-            return items;
-        } catch(DataAccessException e) {
-            throw new ResourceNotFoundException("Cannot retrieve invoice items!", e.getMessage());
-        }
-    }
 
 }

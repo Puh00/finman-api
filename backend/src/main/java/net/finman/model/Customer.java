@@ -1,6 +1,10 @@
 package net.finman.model;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Customer {
+    
     private String name;
     private String address;
     private String zipCode;
@@ -65,4 +69,5 @@ public class Customer {
         this.email = email;
     }
 
+    
 }
