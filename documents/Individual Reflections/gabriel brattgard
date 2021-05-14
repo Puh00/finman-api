@@ -1,0 +1,97 @@
+--- Week 1 (Week 12) ---
+# What do I want to learn or understand better?
+I want to learn React through and through. My summer job is to build stuff in React for Ericsson so I have a clear personal reason for learning it.
+
+# How can I help someone else, or the entire team, to learn something new?
+I can help the group a lot with structuring meetings and coordination.
+
+# What is my contribution towards the team’s use of Scrum?
+Some conflicts in workflow appeared this week due to unspecified tasks leading to double work. 
+
+
+
+--- Week 2 (Week 13) ---
+# What do I want to learn or understand better?
+React has been difficult to really get into without having proper foundational knowledge of HTML and JavaScript so that's something I want to learn. In terms of working in a group I want to be able to avoid claiming the leader role which I usually do. This is due to my stress level being much higher as a leader rather than a participant. I have informed the group of this personal challenge and it was well-received.
+
+# How can I help someone else, or the entire team, to learn something new?
+I believe me opening up about my stress levels have established a good sense of what is okey to say in the group. I have a quite high tolerance towards feeling awkward or embarrassed and think this is something I can use for the benefit of the group.
+
+# What is my contribution towards the team’s use of Scrum?
+During establishing consensus about the responsibilities of each role I made strong contributions around being specific about each role.
+
+# What is my contribution towards the team’s deliveries?
+I took a lot of responsibility in the delivery meeting with the PO this week.
+
+
+
+--- Week 3 (Week 15) ---
+# What do I want to learn or understand better?
+The difference between DoD and Acceptance Criteria is still a bit vague to me. Also, I would like to get faster att breaking User Stories down into tasks. It should have to take two hours so there's gotta be a better way than what I'm doing now.
+
+# How can I help someone else, or the entire team, to learn something new?
+By researching specific parts of the React framework on my own because of my curiosity I can help my coding partner to learn it faster than if we would try to figure it out together at the same time.
+
+# What is my contribution towards the team’s use of Scrum?
+I still feel like my experience surrounding group coordination is my strongest contribution towards the team's use of Scrum. Much of what I have realized on my own through trial-and-error previously is very applicable to how Scrum is structured.
+
+# What is my contribution towards the team’s deliveries?
+I continue to take a lot of responsibility in communicating with the PO and supervisor during those meetings. 
+
+
+
+--- Week 4 (Week 16) ---
+# What do I want to learn or understand better?
+Didn't manage to learn everything I wanted to learn this week due to some parts just being way more difficult to learn once I got into it. I want to learn more about states, uncontrolled, and controlled components in React.
+
+# How can I help someone else, or the entire team, to learn something new?
+Me and my current team partner are really synced in our pair programming. I think my way of breaking things down and insisting on learning it properly from the start benefits us greatly at this point even though it takes a lot more time.
+
+# What is my contribution towards the team’s use of Scrum?
+I insisted on that we need to do the team reflections for our own sake and not for the teacher's. It doesn't provide us with any value att all if we only choose to write it according to what we believe woould please an external participant. I believe this perspective comes from my previous experiences and will benefit the team in finding meaningful reasons to study and apply ourselves.
+
+# What is my contribution towards the team’s deliveries?
+Me and my coding partner managed to connect all the components of the frontend that we set out to do this week which I'm rather proud of.
+
+
+--- Week 5 (Week 17) ---
+# What do I want to learn or understand better?
+This week has been a tough one. I have dived into some CSS and think it is quite confusing so that's something I really want to get a handle on. I also tried to wrap my head around API calls with Axios which was way more confusing than I thought. Will ask for help from the backend team next week to get it done and understand it better.
+
+# How can I help someone else, or the entire team, to learn something new?
+This week we shuffled the teams around so I had to introduce another team member to what had previously been built in React. It was a really healthy lesson to have the teach her and review the code we wrote last week. This week it happend organicly with the rotation but I would like to implement it consistently as well. Sort of like a spaced repetition and review. Things always crystalize once you leave them on the shelf for a while and come back.
+
+# What is my contribution towards the team’s use of Scrum?
+I put a lot of effort this week into defining tasks very precisely and I feel personally that it really paid off during implementation of the tasks.
+
+# What is my contribution towards the team’s deliveries?
+The size of my contribution this week didn't feel massive but what was actually added was well formatted and structured.
+
+
+--- Week 6 (Week 18) ---
+# What do I want to learn or understand better?
+Axios was top of mind this week and implementing an email service. It was difficult to understand the backend part of it and I felt like I mostly sat beside my coding partner this week. I would like to learn API calls and data flow much better to contribute more to the machinery and not just fancy frontend stuff.
+
+# How can I help someone else, or the entire team, to learn something new?
+I can research state/props in React more closely and pass that knowledge on to the team. That's an area where it seems like no-one else is very proficient yet.
+
+# What is my contribution towards the team’s use of Scrum?
+Can't say I was able to contribute that much in that regard this week.
+
+# What is my contribution towards the team’s deliveries?
+Also here, this wasn't my strongest week. I was mostly a bystander trying to learn and keep up with the other's pace.
+
+
+--- Week 7 (Week 19) ---
+# What do I want to learn or understand better?
+I want to understand the whole system of event handlers in react better. Where does it accure? How can I send an event over from one component to the other even though their are in the same level in the hierarcy? Simple put, all life-cycle methods and event handling is what I want to dive into. There are good tutorials I can dig into and exercises I can do.
+
+# How can I help someone else, or the entire team, to learn something new?
+Life-cycle methods seem to be quite unknown to the rest of the team so far but it seems like you can build a lot of cool real-time interactions between components with it so I'm excited to dive into it and teach the other's in the next week.
+
+# What is my contribution towards the team’s use of Scrum?
+I missed out on two daily stand-ups early on in the week due to doctor's appointment and a miss in the schedule by me which really put me off in terms of sync with the team. On top of that the red days on thursday and friday made it difficult to catch up so I can't say I contributed anything of value this week.
+
+# What is my contribution towards the team’s deliveries?
+I fixed a few bugs that some other team members had in implementing React components and structured the code some but wasn't able to start up anything else really. 
+
