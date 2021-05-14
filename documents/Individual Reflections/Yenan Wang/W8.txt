@@ -1,0 +1,25 @@
+# what do I want to learn or understand better?
+Last week I mentioned I should be reading up about Spring Security, but that's
+irrelevant now that we have changed up the teams. This final spring I'm finally
+going to be working in the frontend and try to integrate Google/Facebook API.
+So this week and next week's focus will be just about that.
+
+# how can I help someone else, or the entire team, to learn something new?
+Since I've mainly worked with the backend I can always offer my help to the
+current backend team whenever they encounter a "legacy code" problem. Otherwise,
+I'm the one desperately in need of help in the frontend.
+
+# what is my contribution towards the team’s use of Scrum?
+There were some tasks written but I believe they are to be replaced/updated
+next week since we didn't really know how exactly were we going to implement
+the external APIs. At least this sprint has been extended until next week, since
+there are only 3 working days this week. So things should be sailing smoothly
+by then.
+  
+# what is my contribution towards the team’s deliveries?
+Me and Alex are working on the API integration. Things are not going as well as
+we had thought initially. Mainly due to our lack of understanding of their APIs.
+So by the end of the week, we had only managed to finish the connection to the
+Instagram Basic Display API. But the experience will surely help with the other
+APIs. So despite the struggle this week, next week we should be able to finish
+the API integration.
