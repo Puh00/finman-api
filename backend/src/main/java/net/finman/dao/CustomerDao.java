@@ -1,6 +1,9 @@
 package net.finman.dao;
 
+import java.util.List;
+
 import net.finman.exception.ResourceNotCreatedException;
+import net.finman.exception.ResourceNotFoundException;
 import net.finman.model.UserCustomer;
 
 /**
@@ -9,4 +12,7 @@ import net.finman.model.UserCustomer;
  */
 public interface CustomerDao {
     void createCustomer (UserCustomer customer) throws ResourceNotCreatedException;
+
+    List<UserCustomer> getCustomers(String email) throws ResourceNotFoundException;
 }
+

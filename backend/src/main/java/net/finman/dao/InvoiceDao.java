@@ -3,11 +3,8 @@ package net.finman.dao;
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.exception.ResourceNotFoundException;
 import net.finman.model.Invoice;
-import net.finman.model.InvoiceItem;
-
 
 import java.util.List;
-import java.util.UUID;
 
 public interface InvoiceDao {
     /**

@@ -33,10 +33,10 @@ CREATE TABLE Members
 );
 
 CREATE TABLE UserCustomers (
-    email VARCHAR(128),
+    user VARCHAR(128),
     customer JSONB,
-    PRIMARY KEY (customer, email),
-    FOREIGN KEY (email) REFERENCES Accounts(email)
+    PRIMARY KEY (customer, user),
+    FOREIGN KEY (user) REFERENCES Accounts(email)
 );
 
 
@@ -55,7 +55,7 @@ CREATE TABLE Invoices
     is_paid      BOOLEAN DEFAULT FALSE,
     UNIQUE (serial_no, seller),
     PRIMARY KEY (serial_no, seller),
-    FOREIGN KEY (source, customer) REFERENCES UserCustomers(email, customer)
+    FOREIGN KEY (source, customer) REFERENCES UserCustomers(user, customer)
 );
 
 CREATE TABLE Items
