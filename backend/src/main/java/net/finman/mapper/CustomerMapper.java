@@ -15,5 +15,5 @@ public class CustomerMapper implements RowMapper<UserCustomer> {
         userCustomer.convertAndSetCustomerJsonToObject(rs.getString("customer"));
         return userCustomer;
     }
-    
+
 }

@@ -1,4 +1,3 @@
-
 package net.finman.mapper;
 
 import java.sql.ResultSet;
@@ -14,7 +13,6 @@ public class ItemMapper implements RowMapper<InvoiceItem> {
     @Override
     public InvoiceItem mapRow(ResultSet rs, int rowNum) throws SQLException {
         InvoiceItem item = new InvoiceItem();
-
         item.setName(rs.getString("name"));
         item.setAmount(rs.getInt("amount"));
         item.setPrice(rs.getInt("price"));

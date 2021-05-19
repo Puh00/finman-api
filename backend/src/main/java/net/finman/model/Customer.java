@@ -1,7 +1,7 @@
 package net.finman.model;
 
 public class Customer {
-    
+
     private String name;
     private String address;
     private String zipCode;
@@ -66,5 +66,4 @@ public class Customer {
         this.email = email;
     }
 
-    
 }

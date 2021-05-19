@@ -4,20 +4,19 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class UserCustomer {
-    
-    private String user;
+
+    private String email;
     private Customer customer;
 
-    
-    public void setUser(String user){
-        this.user = user;
+    public void setUser(String email) {
+        this.email = email;
     }
 
-    public String getUser(){
-        return user;
+    public String getUser() {
+        return this.email;
     }
 
-    public void setCustomer(Customer customer){
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
@@ -29,7 +28,8 @@ public class UserCustomer {
             e.printStackTrace();
         }
     }
-    public Customer getCustomer(){
+
+    public Customer getCustomer() {
         return customer;
     }
 }

@@ -1,4 +1,4 @@
-    package net.finman.service;
+package net.finman.service;
 
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.model.Account;

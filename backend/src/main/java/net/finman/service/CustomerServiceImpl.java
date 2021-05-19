@@ -19,12 +19,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void createCustomer(UserCustomer customer) throws ResourceNotCreatedException {
-       customerDao.createCustomer(customer);
+        customerDao.createCustomer(customer);
     }
 
     @Override
     public List<UserCustomer> getCustomers(String email) throws ResourceNotFoundException {
         return customerDao.getCustomers(email);
     }
-    
+
 }
