@@ -40,6 +40,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
             invoiceDao.createInvoice(invoice);
         } catch (JsonProcessingException e) {
+            System.out.println(e.getMessage());
             throw new ResourceNotCreatedException("Invalid invoice JSON!", e.getMessage());
         }
 

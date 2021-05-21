@@ -1,9 +1,11 @@
 package net.finman.dao;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.util.List;
-
+import net.finman.exception.ResourceNotCreatedException;
+import net.finman.exception.ResourceNotFoundException;
+import net.finman.mapper.CustomerMapper;
+import net.finman.model.UserCustomer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -11,14 +13,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import net.finman.exception.ResourceNotCreatedException;
-import net.finman.exception.ResourceNotFoundException;
-import net.finman.mapper.CustomerMapper;
-
 import java.sql.Types;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import net.finman.model.UserCustomer;
+import java.util.List;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
@@ -41,10 +37,13 @@ public class CustomerDaoImpl implements CustomerDao {
             throw new ResourceNotCreatedException("Invalid customer in CustomerDaoImplementation!", e.getMessage());
         }
 
-        SqlParameterSource customerParams = new MapSqlParameterSource().addValue("email", customer.getEmail())
-                .addValue("customer", customerJson, Types.OTHER);
-        template.update(INSERT_CUSTOMER, customerParams);
-
+        try {
+            SqlParameterSource customerParams = new MapSqlParameterSource().addValue("email", customer.getEmail())
+                    .addValue("customer", customerJson, Types.OTHER);
+            template.update(INSERT_CUSTOMER, customerParams);
+        } catch (DataAccessException e) {
+            throw new ResourceNotCreatedException("Couldn't create customer", e.getMessage());
+        }
     }
 
     @Override
