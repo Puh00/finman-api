@@ -1,5 +1,8 @@
+
 package net.finman.model;
 
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,11 +20,12 @@ public class Invoice {
     private String seller;
     private Customer customer;
     private boolean isPaid;
-    private List<Item> items;
+    private List<InvoiceItem> items;
 
     public void setSource(String source) {
         this.source = source;
     }
+
 
     public String getSource() {
         return source;
@@ -87,11 +91,11 @@ public class Invoice {
         return customer;
     }
 
-    
+
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-    
+
 
     public void convertAndSetCustomerJsonToObject(String customer) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -110,12 +114,23 @@ public class Invoice {
         return isPaid;
     }
 
-    public List<Item> getItems() {
+    public List<InvoiceItem> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<InvoiceItem> items) {
         this.items = items;
     }
+
+    public void convertAndSetItemsJsonToObject(String items) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            this.items = Arrays.asList(objectMapper.readValue(items, InvoiceItem[].class));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
