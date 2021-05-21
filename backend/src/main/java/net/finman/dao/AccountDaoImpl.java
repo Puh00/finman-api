@@ -1,5 +1,7 @@
 package net.finman.dao;
 
+import net.finman.exception.ResourceNotCreatedException;
+import net.finman.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -7,12 +9,9 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import net.finman.exception.ResourceNotCreatedException;
-import net.finman.model.Account;
-
 @Repository
 public class AccountDaoImpl implements AccountDao {
-    
+
     @Autowired
     private NamedParameterJdbcTemplate template;
 
@@ -20,7 +19,7 @@ public class AccountDaoImpl implements AccountDao {
 
     @Override
     public void createAccount(Account account) throws ResourceNotCreatedException {
-        try{
+        try {
             SqlParameterSource accountParams = new MapSqlParameterSource()
                     .addValue("name", account.getName())
                     .addValue("email", account.getEmail())

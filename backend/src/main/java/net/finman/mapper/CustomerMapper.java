@@ -1,10 +1,10 @@
 package net.finman.mapper;
 
+import net.finman.model.UserCustomer;
+import org.springframework.jdbc.core.RowMapper;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.springframework.jdbc.core.RowMapper;
-import net.finman.model.UserCustomer;
 
 public class CustomerMapper implements RowMapper<UserCustomer> {
 

@@ -15,7 +15,7 @@ public interface InvoiceDao {
      */
     void createInvoice(Invoice inv) throws ResourceNotCreatedException;
 
-   
+
     /**
      * Returns all invoices related to a specific user. Both the invoices the user
      * has sent and the invoices the user has recieved. Changes nothing upon

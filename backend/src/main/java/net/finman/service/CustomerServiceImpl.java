@@ -1,15 +1,13 @@
 package net.finman.service;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
 import net.finman.dao.CustomerDao;
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.exception.ResourceNotFoundException;
 import net.finman.model.UserCustomer;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

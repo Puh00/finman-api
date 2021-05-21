@@ -1,17 +1,17 @@
 package net.finman.dao;
 
-import java.util.List;
-
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.exception.ResourceNotDeletedException;
 import net.finman.exception.ResourceNotFoundException;
 import net.finman.exception.ResourceNotUpdatedException;
 import net.finman.model.Item;
 
+import java.util.List;
+
 public interface ProductDao {
     /**
      * Creates a product.
-     * 
+     *
      * @param item Item to be stored in the database.
      * @throws ResourceNotCreatedException If the sql insertion failed.
      */
@@ -19,7 +19,7 @@ public interface ProductDao {
 
     /**
      * Retrieves all products related to the specified owner.
-     * 
+     *
      * @param owner The email of the account that owns the product.
      * @return List of products.
      * @throws ResourceNotFoundException If the sql query found nothing.
@@ -28,7 +28,7 @@ public interface ProductDao {
 
     /**
      * Deletes a product from an account.
-     * 
+     *
      * @param owner The email of the account that owns the product.
      * @param name  The name of the product to be deleted.
      * @throws ResourceNotDeletedException If the sql delete failed.
@@ -38,7 +38,7 @@ public interface ProductDao {
 
     /**
      * Updates a product.
-     * 
+     *
      * @param owner The email of the account that owns the product.
      * @param name  The name of the product to be updated.
      * @param item  The new product.

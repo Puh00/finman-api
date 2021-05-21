@@ -1,7 +1,7 @@
 package net.finman.exception;
 
 public class EmailNotSentException extends Exception {
-    private String details;
+    private final String details;
 
     public EmailNotSentException(String message, String details) {
         super(message);

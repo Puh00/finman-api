@@ -1,12 +1,11 @@
 package net.finman.service;
 
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
 import net.finman.dao.AccountDao;
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.model.Account;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service
 public class AccountServiceImpl implements AccountService {

@@ -1,7 +1,7 @@
 package net.finman.exception;
 
 public class ResourceNotUpdatedException extends Exception {
-    private String details;
+    private final String details;
 
     public ResourceNotUpdatedException(String message, String details) {
         super(message);

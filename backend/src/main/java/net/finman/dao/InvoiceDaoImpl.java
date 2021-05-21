@@ -1,5 +1,7 @@
 package net.finman.dao;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.exception.ResourceNotFoundException;
 import net.finman.mapper.InvoiceMapper;
@@ -16,9 +18,6 @@ import java.util.List;
 import java.util.SplittableRandom;
 import java.util.UUID;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 @Repository
 public class InvoiceDaoImpl implements InvoiceDao {
     @Autowired
@@ -26,6 +25,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
 
     private static final String INSERT_INVOICE = "INSERT INTO Invoices(source, serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, customer, items,  is_paid) VALUES (:source, :serial_no, :OCR, :invoice_date, :expiry_date, :bankgiro, :seller, :customer, :items, :is_paid)";
     private static final String GET_INVOICES = "SELECT DISTINCT * FROM (SELECT *, trim('\"' FROM jsonb_path_query(customer, '$.email') :: VARCHAR(128)) as email FROM Invoices) AS info WHERE info.source=:source OR info.email=:email";
+
     @Override
     public void createInvoice(Invoice inv) throws ResourceNotCreatedException {
         try {
@@ -65,7 +65,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
         }
     }
 
-    private String generateOcr(){
+    private String generateOcr() {
         long ocr;
         SplittableRandom rng = new SplittableRandom();
         ocr = rng.longs(1, 1000000000, 9999999999L).sum();
@@ -88,7 +88,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
                 throw new ResourceNotFoundException("You don't have any invoices!", "");
 
             return invoices;
-        } catch(DataAccessException e) {
+        } catch (DataAccessException e) {
             throw new ResourceNotFoundException("Error communcating with database!", e.getMessage());
         }
     }
