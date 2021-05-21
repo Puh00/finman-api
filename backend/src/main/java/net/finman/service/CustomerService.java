@@ -15,6 +15,12 @@ public interface CustomerService {
      */
     void createCustomer(UserCustomer customer) throws ResourceNotCreatedException;
 
+    /**
+     * 
+     * @param email
+     * @return a list of all customers a user has created
+     * @throws ResourceNotFoundException
+     */
     List<UserCustomer> getCustomers(String email) throws ResourceNotFoundException;
 
 }

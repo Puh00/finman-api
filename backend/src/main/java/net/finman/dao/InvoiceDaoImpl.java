@@ -24,7 +24,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
     @Autowired
     private NamedParameterJdbcTemplate template;
 
-    private static final String INSERT_INVOICE = "INSERT INTO Invoices(source, serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, customer, invoice_items,  is_paid) VALUES (:source, :serial_no, :OCR, :invoice_date, :expiry_date, :bankgiro, :seller, :customer, :invoice_items, :is_paid)";
+    private static final String INSERT_INVOICE = "INSERT INTO Invoices(source, serial_no, OCR, invoice_date, expiry_date, bankgiro, seller, customer, items,  is_paid) VALUES (:source, :serial_no, :OCR, :invoice_date, :expiry_date, :bankgiro, :seller, :customer, :items, :is_paid)";
     private static final String GET_INVOICES = "SELECT DISTINCT * FROM (SELECT *, trim('\"' FROM jsonb_path_query(customer, '$.email') :: VARCHAR(128)) as email FROM Invoices) AS info WHERE info.source=:source OR info.email=:email";
     @Override
     public void createInvoice(Invoice inv) throws ResourceNotCreatedException {
@@ -43,7 +43,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
                 throw new ResourceNotCreatedException("Invalid customer JSON!", e.getMessage());
             }
             try {
-                invoiceItemsJson = objectMapper.writeValueAsString(inv.getInvoiceItems());
+                invoiceItemsJson = objectMapper.writeValueAsString(inv.getItems());
             } catch (JsonProcessingException e) {
                 throw new ResourceNotCreatedException("Invalid invoiceItem JSON!", e.getMessage());
             }
@@ -57,7 +57,7 @@ public class InvoiceDaoImpl implements InvoiceDao {
                     .addValue("bankgiro", inv.getBankgiro())
                     .addValue("seller", inv.getSeller())
                     .addValue("customer", customerJson, Types.OTHER)
-                    .addValue("invoice_items", invoiceItemsJson, Types.OTHER)
+                    .addValue("items", invoiceItemsJson, Types.OTHER)
                     .addValue("is_paid", inv.getIsPaid());
             template.update(INSERT_INVOICE, invoiceParams);
         } catch (DataAccessException e) {

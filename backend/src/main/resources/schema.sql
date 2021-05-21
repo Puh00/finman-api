@@ -51,7 +51,7 @@ CREATE TABLE Invoices
     bankgiro     VARCHAR(16),
     seller       VARCHAR(128) REFERENCES Organizations (email),
     customer     JSONB NOT NULL,
-    invoice_items JSONB,
+    items JSONB,
     is_paid      BOOLEAN DEFAULT FALSE,
     UNIQUE (serial_no, seller),
     PRIMARY KEY (serial_no, seller),

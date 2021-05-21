@@ -41,7 +41,7 @@ public class CustomerDaoImpl implements CustomerDao {
             throw new ResourceNotCreatedException("Invalid customer in CustomerDaoImplementation!", e.getMessage());
         }
 
-        SqlParameterSource customerParams = new MapSqlParameterSource().addValue("email", customer.getUser())
+        SqlParameterSource customerParams = new MapSqlParameterSource().addValue("email", customer.getEmail())
                 .addValue("customer", customerJson, Types.OTHER);
         template.update(INSERT_CUSTOMER, customerParams);
 

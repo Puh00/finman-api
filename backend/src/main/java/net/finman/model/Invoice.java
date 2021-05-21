@@ -20,7 +20,7 @@ public class Invoice {
     private String seller;
     private Customer customer;
     private boolean isPaid;
-    private List<InvoiceItem> invoiceItems;
+    private List<InvoiceItem> items;
 
     public void setSource(String source) {
         this.source = source;
@@ -114,18 +114,18 @@ public class Invoice {
         return isPaid;
     }
 
-    public List<InvoiceItem> getInvoiceItems() {
-        return invoiceItems;
+    public List<InvoiceItem> getItems() {
+        return items;
     }
 
-    public void setInvoiceItems(List<InvoiceItem> invoiceItems) {
-        this.invoiceItems = invoiceItems;
+    public void setItems(List<InvoiceItem> items) {
+        this.items = items;
     }
 
-    public void convertAndSetInvoiceItemsJsonToObject(String invoiceItems) {
+    public void convertAndSetItemsJsonToObject(String items) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            this.invoiceItems = Arrays.asList(objectMapper.readValue(invoiceItems, InvoiceItem[].class));
+            this.items = Arrays.asList(objectMapper.readValue(items, InvoiceItem[].class));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

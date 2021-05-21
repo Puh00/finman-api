@@ -11,7 +11,7 @@ public class CustomerMapper implements RowMapper<UserCustomer> {
     @Override
     public UserCustomer mapRow(ResultSet rs, int rowNum) throws SQLException {
         UserCustomer userCustomer = new UserCustomer();
-        userCustomer.setUser(rs.getString("email"));
+        userCustomer.setEmail(rs.getString("email"));
         userCustomer.convertAndSetCustomerJsonToObject(rs.getString("customer"));
         return userCustomer;
     }

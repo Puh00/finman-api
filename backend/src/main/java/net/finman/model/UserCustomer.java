@@ -8,11 +8,11 @@ public class UserCustomer {
     private String email;
     private Customer customer;
 
-    public void setUser(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getUser() {
+    public String getEmail() {
         return this.email;
     }
 
