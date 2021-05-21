@@ -12,7 +12,6 @@ CREATE TABLE Accounts
     CHECK       (email LIKE '%@%.%')
 );
 
-
 CREATE TABLE Organizations
 (
     name      TEXT NOT NULL,
@@ -39,7 +38,6 @@ CREATE TABLE UserCustomers (
     FOREIGN KEY (email) REFERENCES Accounts(email)
 );
 
-
 CREATE TABLE Invoices
 (
     source       VARCHAR(128),
@@ -64,9 +62,4 @@ CREATE TABLE Items
     name  VARCHAR(128) NOT NULL,
     price INTEGER      NOT NULL,
     PRIMARY KEY (owner, name)
-);
-
-CREATE VIEW InvoiceItemsHelper AS (
-    SELECT serial_no, jsonb_array_elements(invoice_items) AS invoiceitems
-    FROM Invoices
 );
