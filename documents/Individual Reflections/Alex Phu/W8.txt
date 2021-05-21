@@ -1,0 +1,21 @@
+
+# What do I want to learn or understand better?
+The course is coming to an end and it has certainly been an an informative experience.
+This is not only the first time that I've worked on a full-stack project, but also the
+first time working in such a large group. Something that I wanted to learn was how to 
+implement authorization, but that will have to wait until the next side-project. 
+
+# How can I help someone else, or the entire team, to learn something new?
+This week was the last sprint so there's no more time left to help each other in this course.
+But I do believe that everyone in the group have learnt new tools that they will continue
+to use in the future such as Git.
+
+# What is my contribution towards the team’s use of Scrum?
+Since our sprint from last week was extended to a 2-week-sprint we didn't create any new 
+user stories. The only scrum-related stuff done this week was the team reflection and
+PO meeting which I participated in.
+
+# What is my contribution towards the team’s deliveries?
+Integrating Facebook Graph API and making sure that everything works when we merged 
+everything into the main branch.
+
