@@ -80,11 +80,14 @@ $ cd backend
 
 2. Add `postgresql` credentials to your `application.properties`:
 
-```diff
-+ spring.datasource.url=URL_TO_YOUR_DATABASE
-+ spring.datasource.username=YOUR_USERNAME
-+ spring.datasource.password=YOUR_PASSWORD
-spring.sql.init.enabled=false
+```bash
+# for your database credentials
+spring.datasource.url=URL_TO_YOUR_DATABASE
+spring.datasource.username=YOUR_USERNAME
+spring.datasource.password=YOUR_PASSWORD
+
+# if you decide to use a schema in spring
+spring.sql.init.enabled=true
 spring.sql.init.schema-locations=classpath:/schema.sql
 spring.sql.init.continue-on-error=true
 ```
