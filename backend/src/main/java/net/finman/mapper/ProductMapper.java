@@ -1,11 +1,10 @@
 package net.finman.mapper;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+import net.finman.model.Item;
 import org.springframework.jdbc.core.RowMapper;
 
-import net.finman.model.Item;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ProductMapper implements RowMapper<Item> {
 

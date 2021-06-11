@@ -2,7 +2,7 @@ package net.finman.exception;
 
 public class ResourceNotDeletedException extends Exception {
 
-    private String details;
+    private final String details;
 
     public ResourceNotDeletedException(String message, String details) {
         super(message);

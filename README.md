@@ -78,15 +78,18 @@ $ cd finman-api
 $ cd backend
 ```
 
-2. Add `postgresql` credentials to your `aplication.properties`:
+2. Add `postgresql` credentials to your `application.properties`:
 
-```diff
-+ spring.datasource.url=URL_TO_YOUR_DATABASE
-+ spring.datasource.username=YOUR_USERNAME
-+ spring.datasource.password=YOUR_PASSWORD
-spring.datasource.initialization-mode=always
-spring.datasource.schema=classpath:/schema.sql
-spring.datasource.continue-on-error=true
+```bash
+# for your database credentials
+spring.datasource.url=URL_TO_YOUR_DATABASE
+spring.datasource.username=YOUR_USERNAME
+spring.datasource.password=YOUR_PASSWORD
+
+# if you decide to use a schema in spring
+spring.sql.init.enabled=true
+spring.sql.init.schema-locations=classpath:/schema.sql
+spring.sql.init.continue-on-error=true
 ```
 
 3. Run the application from your favourite editor or from the command line:
@@ -94,10 +97,8 @@ spring.datasource.continue-on-error=true
 - Requires [Maven](https://mkyong.com/maven/how-to-install-maven-in-windows/)
 
 ```bash
-# Run Spring Boot app using Maven
+# Run Spring Boot app using Maven, by default, the app runs on port 8080
 $ mvn spring-boot:run
-
-# By default, the app runs on port 8080
 ```
 
 ## Usage

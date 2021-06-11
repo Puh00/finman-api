@@ -1,7 +1,7 @@
 package net.finman.exception;
 
 public class ResourceNotFoundException extends Exception {
-    private String details;
+    private final String details;
 
     public ResourceNotFoundException(String message) {
         this(message, "No details were provided");

@@ -1,7 +1,11 @@
 package net.finman.dao;
 
-import java.util.List;
-
+import net.finman.exception.ResourceNotCreatedException;
+import net.finman.exception.ResourceNotDeletedException;
+import net.finman.exception.ResourceNotFoundException;
+import net.finman.exception.ResourceNotUpdatedException;
+import net.finman.mapper.ProductMapper;
+import net.finman.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -9,12 +13,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import net.finman.exception.ResourceNotCreatedException;
-import net.finman.exception.ResourceNotDeletedException;
-import net.finman.exception.ResourceNotFoundException;
-import net.finman.exception.ResourceNotUpdatedException;
-import net.finman.mapper.ProductMapper;
-import net.finman.model.Item;
+import java.util.List;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
@@ -63,7 +62,7 @@ public class ProductDaoImpl implements ProductDao {
                     .addValue("name", name);
 
             int affectedRows = template.update(DELETE_PRODUCT, itemParams);
-            
+
             if (affectedRows == 0)
                 throw new ResourceNotFoundException("Resource does not exist");
         } catch (DataAccessException e) {
@@ -73,7 +72,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void updateProduct(String owner, String name, Item item) throws ResourceNotFoundException, ResourceNotUpdatedException {
-         try {
+        try {
             SqlParameterSource itemParams = new MapSqlParameterSource()
                     .addValue("newName", item.getName())
                     .addValue("price", item.getPrice())
@@ -81,11 +80,11 @@ public class ProductDaoImpl implements ProductDao {
                     .addValue("owner", owner);
 
             int affectedRows = template.update(UPDATE_PRODUCT, itemParams);
-            
+
             if (affectedRows == 0)
                 throw new ResourceNotFoundException("Resource does not exist");
         } catch (DataAccessException e) {
             throw new ResourceNotUpdatedException("Failed updating the item", e.getMessage());
-        }       
+        }
     }
 }

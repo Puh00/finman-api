@@ -12,7 +12,6 @@ CREATE TABLE Accounts
     CHECK       (email LIKE '%@%.%')
 );
 
-
 CREATE TABLE Organizations
 (
     name      TEXT NOT NULL,
@@ -32,9 +31,16 @@ CREATE TABLE Members
     PRIMARY KEY (account, organization)
 );
 
+CREATE TABLE UserCustomers (
+    email VARCHAR(128),
+    customer JSONB,
+    PRIMARY KEY (email, customer),
+    FOREIGN KEY (email) REFERENCES Accounts(email)
+);
+
 CREATE TABLE Invoices
 (
-    source       VARCHAR(128) REFERENCES Accounts(email),
+    source       VARCHAR(128),
     serial_no    UUID DEFAULT uuid_generate_v4(),
     VAT          INTEGER      NOT NULL DEFAULT 25,
     OCR          VARCHAR(16)  NOT NULL,
@@ -43,9 +49,11 @@ CREATE TABLE Invoices
     bankgiro     VARCHAR(16),
     seller       VARCHAR(128) REFERENCES Organizations (email),
     customer     JSONB NOT NULL,
+    items JSONB,
     is_paid      BOOLEAN DEFAULT FALSE,
     UNIQUE (serial_no, seller),
-    PRIMARY KEY (serial_no, seller)
+    PRIMARY KEY (serial_no, seller),
+    FOREIGN KEY (source, customer) REFERENCES UserCustomers(email, customer)
 );
 
 CREATE TABLE Items
@@ -55,16 +63,3 @@ CREATE TABLE Items
     price INTEGER      NOT NULL,
     PRIMARY KEY (owner, name)
 );
-
-CREATE TABLE InvoiceItems
-(
-    invoice UUID,
-    seller  VARCHAR(128),
-    name    VARCHAR(128),
-    owner   VARCHAR(128),
-    amount  INTEGER NOT NULL CHECK (amount >= 0),
-    PRIMARY KEY (invoice, seller, owner, name),
-    FOREIGN KEY (invoice, seller) REFERENCES Invoices (serial_no, seller)
-);
-
-

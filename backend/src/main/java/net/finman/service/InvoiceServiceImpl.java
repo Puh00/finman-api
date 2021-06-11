@@ -1,22 +1,19 @@
 package net.finman.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import net.finman.dao.InvoiceDao;
 import net.finman.exception.EmailNotSentException;
 import net.finman.exception.ResourceNotCreatedException;
 import net.finman.exception.ResourceNotFoundException;
 import net.finman.model.Invoice;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 import javax.annotation.Resource;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
@@ -38,8 +35,8 @@ public class InvoiceServiceImpl implements InvoiceService {
             invoice = objectMapper.readValue(invoiceJson, Invoice.class);
 
             invoiceDao.createInvoice(invoice);
-            invoiceDao.addInvoiceItems(invoice.getSerialNumber(), invoice.getSeller(), invoice.getItems());
         } catch (JsonProcessingException e) {
+            System.out.println(e.getMessage());
             throw new ResourceNotCreatedException("Invalid invoice JSON!", e.getMessage());
         }
 

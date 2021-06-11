@@ -1,0 +1,41 @@
+# what do I want to learn or understand better?
+I have been content with the pace we are progressing. The overrall efficiency
+has been really good for a team consisting solely of inexperienced programmers.
+If there is anything I would like to learn, then it would probably be an
+alternative way of working collaborately in a team.
+
+During this course we have been doing exclusively pair/trio-programming.
+Admittedly, this is the best way to produce high-quality codes while also
+learning a whole bunch. I feel like I have a pretty good understanding of the
+merits of pair-programming now, and I can't help but wondering about how a team
+executes when everyone is working solo. Though, this will have to be
+investigated later, in some future projects, maybe.
+
+# how can I help someone else, or the entire team, to learn something new?
+God knows.
+
+On a more serious note, there is nothing more we "need" to do on the technical
+side. Only thing left now are the presentation and the final reflection.
+Therefore, no one really need to learn anything new for this project. What I
+could do though, is to revise what we have done so far so that the final
+reflection can go more smoothly.
+
+# what is my contribution towards the team’s use of Scrum?
+Not neccessarily a whole lot this week since the tasks have already been defined
+lask week. We did, however, update some of the tasks to match our current
+situations. The modifications happened mainly due to the lack of knowledge of
+the technical aspects of our last user story. If we had any idea about what is
+to be expected when it comes to API integration, then we probably could foresee
+the problems we might encounter, and therefor make more appropriate tasks.
+
+# what is my contribution towards the team’s deliveries?
+Last week me and Alex were trying to implement the Instagram API, but it turned
+out that the instagram offers two different sort of APIs for the two different
+types of users they have (Yeah, we kinda realized that way too late), evidently 
+normal users and business users. We thought that would be too much work so we
+called it quits and switched to Facebook API.
+
+So this week, me and Alex managed to integrate the Facebook API into our
+application and that marks the final step of this project. It was not the most
+we could have done but considering the amount of research that required us to 
+do, I would say that is fair.
